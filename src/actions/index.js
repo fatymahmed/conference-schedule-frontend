@@ -14,3 +14,22 @@ const removeTalk = id => ({
   id,
 })
 
+const fetchSuccess = () => ({
+  type: FETCH_SUCCESS,
+})
+
+const fetchError = () => ({
+  type: FETCH_ERROR,
+})
+
+const fetchOngoing = () => ({
+  type: PROCESSING,
+})
+
+export {
+  addTalks,
+  removeTalk,
+  fetchError,
+  fetchOngoing,
+  fetchSuccess,
+}
