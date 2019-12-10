@@ -32,4 +32,6 @@ export {
   fetchError,
   fetchOngoing,
   fetchSuccess,
+  ADD_TALKS,
+  REMOVE_TALK,
 }
