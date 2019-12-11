@@ -16,9 +16,10 @@ export default class App extends React.Component {
  }
  
  handleLogin(data) {
+   const { user } = data;
    this.setState({
      loggedInStatus: "LOGGED_IN",
-     user: data,
+     user,
    })
  }
  render() {
