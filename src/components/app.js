@@ -12,15 +12,28 @@ export default class App extends React.Component {
      loggedInStatus: "NOT_LOGGED_IN",
      user: {}
    }
- } 
+   this.handleLogin = this.handleLogin.bind(this);
+ }
+ 
+ handleLogin(data) {
+   this.setState({
+     loggedInStatus: "LOGGED_IN",
+     user: data,
+   })
+ }
  render() {
    return(
     <div>
     <Talks />
     <BrowserRouter>
       <Switch>
-        <Route exact path={"/"} 
-          render={props => (<Home { ...props} loggedInStatus={this.state.loggedInStatus}/>)} />
+        <Route 
+          exact 
+          path={"/"} 
+          render={props => (
+            <Home { ...props} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus}/>
+          )} 
+        />
         <Route exact path={"/dashboard"}
         render={props => (<Dashboard { ...props} loggedInStatus={this.state.loggedInStatus}/>)} />
           </Switch>
