@@ -5,16 +5,29 @@ import Dashboard from './Dashboard';
 import Home from './Home';
 
 
-const App = () => (
-  <div>
+export default class App extends React.Component {
+ constructor() {
+   super();
+   this.state = {
+     loggedInStatus: "NOT_LOGGED_IN",
+     user: {}
+   }
+ } 
+ render() {
+   return(
+    <div>
     <Talks />
     <BrowserRouter>
       <Switch>
-        <Route exact path={"/"} component={Home} />
-        <Route exact path={"/dashboard"} component={Dashboard} />
-      </Switch>
+        <Route exact path={"/"} 
+          render={props => (<Home { ...props} loggedInStatus={this.state.loggedInStatus}/>)} />
+        <Route exact path={"/dashboard"}
+        render={props => (<Dashboard { ...props} loggedInStatus={this.state.loggedInStatus}/>)} />
+          </Switch>
     </BrowserRouter>
   </div>
-)
+   )
+ }
 
-export default App;
+}
+
