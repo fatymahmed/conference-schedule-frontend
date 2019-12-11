@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import Talk from './talk';
 import { fetchFailure, fetchOnGoing, fetchSuccess,addTalks } from '../actions/index'; 
 import { get } from '../services/api-service';
