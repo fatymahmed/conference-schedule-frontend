@@ -18,19 +18,19 @@ const fetchSuccess = () => ({
   type: FETCH_SUCCESS,
 })
 
-const fetchError = () => ({
+const fetchFailure = () => ({
   type: FETCH_ERROR,
 })
 
-const fetchOngoing = () => ({
+const fetchOnGoing = () => ({
   type: PROCESSING,
 })
 
 export {
   addTalks,
   removeTalk,
-  fetchError,
-  fetchOngoing,
+  fetchFailure,
+  fetchOnGoing,
   fetchSuccess,
   ADD_TALKS,
   REMOVE_TALK,

@@ -1,4 +1,4 @@
-import { ADD_TALKS, REMOVE_TALK} from '../actions/index';
+import { ADD_TALKS, REMOVE_TALK } from '../actions/index';
 
 const talks = (state = [], action) => {
     switch(action.type) {
