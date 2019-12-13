@@ -1,8 +1,7 @@
 import React from 'react';
 
 const Talk = (props) => {
-  const {talk} = props;
-  console.log(talk);
+  const {talk, user} = props;
   return (
     <div>
       <h1>{talk.title}</h1>

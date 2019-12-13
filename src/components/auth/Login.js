@@ -8,7 +8,6 @@ export default class Login extends React.Component {
     this.state = {
       email: '',
       password: '',
-      password_confirmation: '',
       loginErrors: '',
     }
     this.handleSubmit = this.handleSubmit.bind(this);

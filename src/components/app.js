@@ -58,6 +58,7 @@ export default class App extends React.Component {
    })
  }
  render() {
+   const { user } = this.state;
    return(
     <div>
     <BrowserRouter>
@@ -70,7 +71,7 @@ export default class App extends React.Component {
           )} 
         />
         <Route exact path={"/talks"}
-        render={props => (<Talks { ...props} loggedInStatus={this.state.loggedInStatus}/>)} />
+        render={props => (<Talks { ...props} user={user.email} loggedInStatus={this.state.loggedInStatus}/>)} />
           </Switch>
     </BrowserRouter>
   </div>
