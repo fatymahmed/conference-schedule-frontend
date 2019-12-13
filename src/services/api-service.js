@@ -1,6 +1,7 @@
 const get = (onSuccess, onError, apiURL) => {
-  fetch(apiURL, {method: 'GET'}).then(result => result.json())
+  fetch('http://localhost:3001/talks', {method: 'GET'}).then(result => result.json())
   .then((result) => {
+    console.log(result);
     if (result.error) {
       onError();
     }

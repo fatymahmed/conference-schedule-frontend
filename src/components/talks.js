@@ -18,6 +18,7 @@ componentDidMount() {
 }
 
 onFetchSuccess(data) {
+  console.log(data);
   const { fetchSuccess, addTalks } = this.props;
   fetchSuccess();
   addTalks(data);
@@ -28,9 +29,11 @@ onFetchFailure(error) {
   fetchFailure();
 }
 render() {
-  const { talks } =this.props
-  return ( talks.map( talk => 
-    <Talk key={talk.title.slice(0,4)} talk={talk}/>)) 
+  const { talks, loggedInStatus } =this.props
+  return (
+       talks.map( talk => 
+          <Talk key= {talk.title.slice(0,4)} talk={talk}/>)
+    ) 
   };
 };
 

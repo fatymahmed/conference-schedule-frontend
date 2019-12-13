@@ -60,7 +60,6 @@ export default class App extends React.Component {
  render() {
    return(
     <div>
-    <Talks />
     <BrowserRouter>
       <Switch>
         <Route 
@@ -70,8 +69,8 @@ export default class App extends React.Component {
             <Home { ...props} handleLogin={this.handleLogin} handleLogout={this.handleLogout} loggedInStatus={this.state.loggedInStatus}/>
           )} 
         />
-        <Route exact path={"/dashboard"}
-        render={props => (<Dashboard { ...props} loggedInStatus={this.state.loggedInStatus}/>)} />
+        <Route exact path={"/talks"}
+        render={props => (<Talks { ...props} loggedInStatus={this.state.loggedInStatus}/>)} />
           </Switch>
     </BrowserRouter>
   </div>
