@@ -22,11 +22,14 @@ const removeTalk = id => ({
   id,
 })
 
-const addSchedules = schedules => ({
+const addSchedules = schedule => ({
+  type: ADD_SCHEDULES,  
+  schedule,
+})
+const storeSchedules = schedules => ({
   type: ADD_SCHEDULES,  
   schedules,
 })
-
 const removeSchedule = id => ({
   type: REMOVE_SCHEDULE,
   id,
@@ -53,6 +56,7 @@ export {
   REMOVE_TALK,
   ADD_SCHEDULES,
   addSchedules,
+  storeSchedules,
   removeSchedule,
   storeUser,
   STORE_USER,

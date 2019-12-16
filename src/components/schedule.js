@@ -3,8 +3,7 @@ import Talk from './talk';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-
-import { fetchFailure, fetchOnGoing, fetchSuccess, addSchedules, storeUser } from '../actions/index'; 
+import { fetchFailure, fetchOnGoing, fetchSuccess, storeSchedules, storeUser } from '../actions/index'; 
 import { get } from '../services/api-service';
 
 class Schedules extends React.Component{
@@ -21,14 +20,12 @@ componentDidMount() {
   // this.loggedInStatus();
   const { schedules } = this.props;
   // fetchOnGoing();
-  console.log("SCHEDULES ARE", schedules);
   axios.get("http://localhost:3001/logged_in",
   { withCredentials: true })
   .then(response => {
     this.setState({
       user_id: response.data.user.id,
     })
-    console.log("USER INFO",this.state.user_id);
     const { user_id } = this.state;
     get(this.onFetchSuccess, this.onFetchFailure, `http://localhost:3001/${user_id}/schedules`);
   })
@@ -48,10 +45,10 @@ onFetchSuccessLogIn(data) {
 
 onFetchSuccess(data) {
   console.log("SCHEDULES are", data);
-  const { fetchSuccess, addSchedules } = this.props;
+  const { fetchSuccess, storeSchedules } = this.props;
   fetchSuccess();
   console.log("data of schedules is added", data);
-  addSchedules(data);
+  storeSchedules(data);
 }
 
 onFetchFailure(error) {
@@ -73,9 +70,9 @@ render() {
 
 Schedules.propTypes = {
   fetchOnGoing: PropTypes.func.isRequired,
-  addSchedules: PropTypes.func.isRequired,
+  storeSchedules: PropTypes.func.isRequired,
   fetchSuccess: PropTypes.func.isRequired,
-  addSchedules: PropTypes.func.isRequired,
+  storeSchedules: PropTypes.func.isRequired,
 
 };
 
@@ -86,7 +83,7 @@ const mapDispatchToProps = dispatch => ({
   fetchOnGoing: () => dispatch(fetchOnGoing()),
   fetchFailure: () => dispatch(fetchFailure()),
   fetchSuccess: () => dispatch(fetchSuccess()),
-  addSchedules: schedules => dispatch(addSchedules(schedules)),
+  storeSchedules: schedules => dispatch(storeSchedules(schedules)),
   storeUser: () => dispatch(this.loggedInStatus()),
 });
 

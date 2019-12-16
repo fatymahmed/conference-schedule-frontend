@@ -7,7 +7,7 @@ import { addSchedules, fetchFailure, fetchOnGoing, fetchSuccess, } from '../acti
 const Talk = (props) => {
   const {talk, user} = props;
 const createSchedule = () => ({
-    user_id: user,
+    user_id: user.id,
     talk_id: talk.id,
   })
   const onSuccessPost = (data) => {
@@ -38,7 +38,7 @@ const mapDispatchToProps = dispatch => ({
   fetchOnGoing: () => dispatch(fetchOnGoing()),
   fetchFailure: () => dispatch(fetchFailure()),
   fetchSuccess: () => dispatch(fetchSuccess()),
-  addSchedules: schedules => dispatch(addSchedules(schedules)),
+  addSchedules: schedule => dispatch(addSchedules(schedule)),
 });
 
 export default connect(null, mapDispatchToProps)(Talk);
