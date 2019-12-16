@@ -9,12 +9,13 @@ class Talks extends React.Component{
     super(props);
   this.onFetchFailure = this.onFetchFailure.bind(this);
   this.onFetchSuccess = this.onFetchSuccess.bind(this);
+  this.mySchedule = this.mySchedule.bind(this);
   }
 
 componentDidMount() {
   const { fetchOnGoing } = this.props;
   fetchOnGoing();
-  get(this.onFetchSuccess, this.onFetchFailure);
+  get(this.onFetchSuccess, this.onFetchFailure, 'http://localhost:3001/talks');
 }
 
 onFetchSuccess(data) {
@@ -24,22 +25,28 @@ onFetchSuccess(data) {
   addTalks(data.data);
 }
 
+mySchedule(){
+  this.props.history.push(`/schedule`);
+}
 onFetchFailure(error) {
   const { fetchFailure } = this.props;
   fetchFailure();
 }
 render() {
-  const { talks, loggedInStatus, user } =this.props
+  const { talks, loggedInStatus, user, history } =this.props;
+  console.log("data intalks", user);
+
   return (
-       talks.map( (talk,index) => 
-          <Talk key= {index} talk={talk} user={user}/>)
+    <div>
+      {talks.map((talk,index) => <Talk key={index} talk={talk} user={user}/>)}
+      <button onClick = {this.mySchedule}>My schedule</button>
+    </div>
     ) 
   };
 };
 
 const mapStateToProps = (state) => ({
   talks: state.talks,
-  // apis: state.apis,
 });
 
 const mapDispatchToProps = dispatch => ({

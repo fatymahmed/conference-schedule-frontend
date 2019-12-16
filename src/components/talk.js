@@ -1,20 +1,22 @@
 import React from 'react';
 import { post } from '../services/api-service';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { addSchedules, fetchFailure, fetchOnGoing, fetchSuccess, } from '../actions/index';
 
 const Talk = (props) => {
   const {talk, user} = props;
-  const createSchedule = () => ({
+const createSchedule = () => ({
     user_id: user,
     talk_id: talk.id,
   })
-  const onSuccessPost = () => {
+  const onSuccessPost = (data) => {
     const { fetchSuccess, addSchedules } = this.props;
     fetchSuccess();
-    // addSchedules(data);
+    addSchedules(data);
   }
   const handleSubmit = () => {
-    console.log(post(onSuccessPost, () => {}, createSchedule()));
+  post(onSuccessPost, () => {}, createSchedule());
   }
 
   return (
@@ -26,4 +28,17 @@ const Talk = (props) => {
   )
 };
 
-export default Talk;
+Talk.propTypes = {
+  fetchOnGoing: PropTypes.func.isRequired,
+  addSchedules: PropTypes.func.isRequired,
+  fetchSuccess: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = dispatch => ({
+  fetchOnGoing: () => dispatch(fetchOnGoing()),
+  fetchFailure: () => dispatch(fetchFailure()),
+  fetchSuccess: () => dispatch(fetchSuccess()),
+  addSchedules: schedules => dispatch(addSchedules(schedules)),
+});
+
+export default connect(null, mapDispatchToProps)(Talk);

@@ -5,6 +5,12 @@ const FETCH_SUCCESS = 'fetch_success';
 const FETCH_ERROR = 'fetch_error';
 const ADD_SCHEDULES = 'add_schedules';
 const REMOVE_SCHEDULE = 'remove_schedule';
+const STORE_USER = 'store_user';
+
+const storeUser = user =>({
+  type: STORE_USER,
+  user
+})
 
 const addTalks = talks => ({
   type: ADD_TALKS,  
@@ -16,9 +22,9 @@ const removeTalk = id => ({
   id,
 })
 
-const addSchedules = schedule => ({
+const addSchedules = schedules => ({
   type: ADD_SCHEDULES,  
-  schedule,
+  schedules,
 })
 
 const removeSchedule = id => ({
@@ -45,6 +51,9 @@ export {
   fetchSuccess,
   ADD_TALKS,
   REMOVE_TALK,
+  ADD_SCHEDULES,
   addSchedules,
   removeSchedule,
+  storeUser,
+  STORE_USER,
 }

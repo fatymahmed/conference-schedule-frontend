@@ -2,11 +2,12 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 import Talks from './talks';
-import Dashboard from './Dashboard';
 import Home from './Home';
+import Schedules from './schedule';
+import { connect } from 'react-redux';
 
 
-export default class App extends React.Component {
+class App extends React.Component {
  constructor() {
    super();
    this.state = {
@@ -26,6 +27,7 @@ export default class App extends React.Component {
             loggedInStatus: "LOGGED_IN",
             user: response.data.user,
           })
+          console.log("user id in app", this.state.user);
       }
       else if ( !response.data.logged_In & this.state.loggedInStatus=== "LOGGED_IN") {
         this.setState({
@@ -51,11 +53,12 @@ export default class App extends React.Component {
  }
 
  handleLogin(data) {
-   const { user } = data;
+   const { user } = data.user;
    this.setState({
      loggedInStatus: "LOGGED_IN",
      user,
    })
+  //  storeUser(this.state.user);
  }
  render() {
    const { user } = this.state;
@@ -71,8 +74,13 @@ export default class App extends React.Component {
           )} 
         />
         <Route exact path={"/talks"}
-        render={props => (<Talks { ...props} user={user.id} loggedInStatus={this.state.loggedInStatus}/>)} />
-          </Switch>
+        render={props => (<Talks { ...props} user={user} loggedInStatus={this.state.loggedInStatus}/>)} />
+        <Route exact path={"/schedule"} 
+          render={props => (
+            <Schedules { ...props} user={this.props.user} loggedInStatus={this.state.loggedInStatus}/>)}/>
+          )} 
+        />
+      </Switch>
     </BrowserRouter>
   </div>
    )
@@ -80,3 +88,12 @@ export default class App extends React.Component {
 
 }
 
+const mapStateToProps = state => ({
+ user: state.user,
+})
+
+const mapDispatchToProps = dispatch => ({
+  // storeUser: user => dispatch(storeUser(user))
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);

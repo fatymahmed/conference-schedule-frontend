@@ -32,7 +32,7 @@ const initialTalks = [{
   description: "a great event for the closing",
 },
 ];
-const store = createStore(rootReducer, { talks: initialTalks});
+const store = createStore(rootReducer, { talks: initialTalks, schedules: [], user: {}});
 
 ReactDOM.render(
   <Provider store = {store}>

@@ -1,5 +1,5 @@
-const get = (onSuccess, onError) => {
-  fetch('http://localhost:3001/talks', {method: 'GET'}).then(result => result.json())
+const get = (onSuccess, onError, apiURL) => {
+  fetch(apiURL, {method: 'GET'}).then(result => result.json())
   .then((result) => {
     console.log(result);
     if (result.error) {
@@ -19,14 +19,14 @@ const post = ( onSuccess, onError, data) => {
     },
     body: JSON.stringify(data),
   }).then(result => result.json())
-  .then((result) => result) }
-  //  if (result.error) {
-  //     onError();
-  //   } else {
-  //     onSuccess(result);
-  //   }
-  // }).catch(error => onError(error));
-// };
+  .then((result) => {
+   if (result.error) {
+      onError();
+    } else {
+      onSuccess(result);
+    }
+  }).catch(error => onError(error));
+};
 
 const remove = (onSuccess, onError, apiURL) => {
   fetch(apiURL, {method: 'DELETE'}).then(result => result.json())
