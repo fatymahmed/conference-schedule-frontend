@@ -33,15 +33,20 @@ onFetchFailure(error) {
   const { fetchFailure } = this.props;
   fetchFailure();
 }
+handleClick(talk){
+const talkInfo = talk;
+console.log(talkInfo);
+  this.props.history.push({pathname: `/talk`, state: { talk: talkInfo}});
+}
 render() {
   const { talks, loggedInStatus, user, history } =this.props;
   console.log("data intalks", user);
 
   return (
     <div>
-      <HeaderTalks/>
+      <HeaderTalks title='Talks'/>
       <div style={{backgroundColor: '#e4f2f7'}}>
-        {talks.map((talk,index) => <Talk key={index} talk={talk} user={user}/>)}
+        {talks.map((talk,index) => <Talk onClick={i => this.handleClick(i)} key={index} talk={talk} user={user}/>)}
         <button onClick = {this.mySchedule}>My schedule</button>
       </div>
     </div>

@@ -5,6 +5,7 @@ import Talks from './talks';
 import Home from './Home';
 import Schedules from './schedule';
 import { connect } from 'react-redux';
+import ShowTalk from './showTalk';
 
 
 class App extends React.Component {
@@ -81,6 +82,8 @@ class App extends React.Component {
             <Schedules { ...props} user={this.props.user} loggedInStatus={this.state.loggedInStatus}/>)}/>
           )} 
         />
+        <Route exact path={"/talk"}
+        render={props => (<ShowTalk { ...props} user={user} loggedInStatus={this.state.loggedInStatus}/>)} />
       </Switch>
     </BrowserRouter>
   </div>

@@ -1,7 +1,7 @@
 const get = (onSuccess, onError, apiURL) => {
   fetch(apiURL, {method: 'GET'}).then(result => result.json())
   .then((result) => {
-    console.log(result);
+    // console.log(result);
     if (result.error) {
       onError();
     }
@@ -9,6 +9,9 @@ const get = (onSuccess, onError, apiURL) => {
       onSuccess(result);
     }
   }).catch(error => onError(error));
+};
+const get1 = (apiURL) => {
+  fetch(apiURL, {method: 'GET'}).then(result => result.json())
 };
 
 const post = ( onSuccess, onError, data) => {
@@ -18,14 +21,7 @@ const post = ( onSuccess, onError, data) => {
       'Content-Type': 'application/json', 
     },
     body: JSON.stringify(data),
-  }).then(result => result.json())
-  .then((result) => {
-   if (result.error) {
-      onError();
-    } else {
-      onSuccess(result);
-    }
-  }).catch(error => onError(error));
+  })
 };
 
 const remove = (onSuccess, onError, apiURL) => {
@@ -44,4 +40,5 @@ export {
   post,
   get,
   remove,
+  get1,
 }

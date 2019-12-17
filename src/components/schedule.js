@@ -27,10 +27,10 @@ componentDidMount() {
       user_id: response.data.user.id,
     })
     const { user_id } = this.state;
+    const { fetchOnGoing } = this.props;
+    fetchOnGoing();
     get(this.onFetchSuccess, this.onFetchFailure, `http://localhost:3001/${user_id}/schedules`);
   })
-    const { fetchOnGoing } = this.props;
-  fetchOnGoing();
 }
 // loggedInStatus() {
   // const { user }= this.props;
