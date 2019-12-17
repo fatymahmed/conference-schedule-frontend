@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addSchedules, fetchFailure, fetchOnGoing, fetchSuccess, } from '../actions/index';
 import './style.css';
+import changeDateFormat from '../helper';
 
 class Talk extends React.Component{
   constructor(props){
@@ -12,29 +13,6 @@ class Talk extends React.Component{
     this.onSuccessPost = this.onSuccessPost.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-   changeDateFormat = (Time) => {
-    const temp = [];
-    temp.push(Number(Time.slice(0,4)));
-    temp.push(Number(Time.slice(5,7)));
-    temp.push(Number(Time.slice(8,10)));
-    temp.push(Number(Time.slice(11,13)));
-    temp.push(Number(Time.slice(14,16)));
-    const date = [];
-    const time = [];
-    date.push(temp[0]);
-    date.push(temp[1]);
-    date.push(temp[2]);
-    console.log("date is", date);
-    time.push(temp[3])
-    time.push(temp[4])
-    return ({
-      date: date.join('/'),
-      time: time.join(':')
-    })
-  }
-//  const hey = changeDateFormat(talk.startTime);
-//   console.log("time is ",hey.getHours());
-// }
   createSchedule(){
     const {talk, user} = this.props;
     return({
@@ -54,8 +32,8 @@ class Talk extends React.Component{
 
   render(){
   const {talk, user} = this.props;
-  const startTime = this.changeDateFormat(talk.startTime);
-  const endTime = this.changeDateFormat(talk.endTime);
+  const startTime = changeDateFormat(talk.startTime);
+  const endTime = changeDateFormat(talk.endTime);
   return (
     <div onClick={() => this.props.onClick(talk)} className='talkContainer'>
       <p className='timeDate'>{startTime.date}</p>
