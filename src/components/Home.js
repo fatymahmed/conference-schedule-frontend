@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Registration from './auth/Registration';
 import Login from './auth/Login';
+import './style.css';
 
 export default class Home extends React.Component {
   constructor(props){
@@ -28,10 +29,10 @@ export default class Home extends React.Component {
   render() {
     return(
       <div>
-        <h1>Home</h1>
-        <h1> Status {this.props.loggedInStatus}</h1>
         <button onClick={ () =>this.handleLogoutClick()}>Logout</button>
         <Registration handleSuccessfulAuth={this.handleSuccessfulAuth}/>
+        <p className='signInText'>Already have an account?</p>
+        <button >Sign In</button>
         <Login handleSuccessfulAuth={this.handleSuccessfulAuth}/>
       </div>
     )

@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import '../style.css';
 
 export default class Registration extends React.Component {
   constructor(props){
@@ -46,12 +47,22 @@ export default class Registration extends React.Component {
   }
     render() {
     return(
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input type= "email" name="email" placeholder="Email" value={this.state.email} onChange={this.handleChange} required/>
-          <input type= "password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} required/>
-          <input type= "password" name="password_confirmation" placeholder=" confirmation" value={this.state.password_confirmation} onChange={this.handleChange} required/>
-          <button type= "submit">Register</button>
+      <div style={{backgroundColor: 'white', }}>
+        <h2 style={{color: '#000080', textAlign: 'center'}}>Sign Up</h2>
+        <form onSubmit={this.handleSubmit} style={{textAlign: 'center'}}>
+          <div>
+          <label htmlFor="email">Email</label><br/>
+          <input  type= "email" name="email" value={this.state.email} onChange={this.handleChange} required/><br/>
+          </div>
+         <div>
+         <label htmlFor="email">Password</label><br/>
+          <input type= "password" name="password" value={this.state.password} onChange={this.handleChange} required/><br/>
+         </div>
+          <div>
+          <label htmlFor="email">Password confirmation</label><br/>
+          <input type= "password" name="password_confirmation" value={this.state.password_confirmation} onChange={this.handleChange} required/><br/>
+          </div>
+          <button type= "submit">Sign Up</button>
         </form>
       </div>
     )

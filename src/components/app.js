@@ -73,6 +73,7 @@ class App extends React.Component {
             <Home { ...props} handleLogin={this.handleLogin} handleLogout={this.handleLogout} loggedInStatus={this.state.loggedInStatus}/>
           )} 
         />
+        
         <Route exact path={"/talks"}
         render={props => (<Talks { ...props} user={user} loggedInStatus={this.state.loggedInStatus}/>)} />
         <Route exact path={"/schedule"} 

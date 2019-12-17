@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Talk from './talk';
+import HeaderTalks from './headerTalks'; 
 import { fetchFailure, fetchOnGoing, fetchSuccess,addTalks } from '../actions/index'; 
 import { get } from '../services/api-service';
 
@@ -38,9 +39,13 @@ render() {
 
   return (
     <div>
-      {talks.map((talk,index) => <Talk key={index} talk={talk} user={user}/>)}
-      <button onClick = {this.mySchedule}>My schedule</button>
+      <HeaderTalks/>
+      <div style={{backgroundColor: '#e4f2f7'}}>
+        {talks.map((talk,index) => <Talk key={index} talk={talk} user={user}/>)}
+        <button onClick = {this.mySchedule}>My schedule</button>
+      </div>
     </div>
+    
     ) 
   };
 };
