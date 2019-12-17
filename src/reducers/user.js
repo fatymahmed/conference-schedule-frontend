@@ -1,6 +1,6 @@
 import { STORE_USER } from '../actions/index';
 
-const user = (state = 0, action) => {
+const user = (state = [], action) => {
     switch(action.type) {
         case STORE_USER:
             return action.user;  
@@ -10,3 +10,4 @@ const user = (state = 0, action) => {
 }
 
 export default user;
+

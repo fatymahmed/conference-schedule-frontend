@@ -39,15 +39,12 @@ componentDidMount() {
 // }
 
 onFetchSuccessLogIn(data) {
-  console.log("user log in info", data);
-  storeUser(data.user);
+  // storeUser(data.user);
 }
 
 onFetchSuccess(data) {
-  console.log("SCHEDULES are", data);
   const { fetchSuccess, storeSchedules } = this.props;
   fetchSuccess();
-  console.log("data of schedules is added", data);
   storeSchedules(data);
 }
 

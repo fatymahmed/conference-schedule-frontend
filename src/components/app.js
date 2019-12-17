@@ -6,6 +6,7 @@ import Home from './Home';
 import Schedules from './schedule';
 import { connect } from 'react-redux';
 import ShowTalk from './showTalk';
+import { storeUser } from '../actions/index';
 
 
 class App extends React.Component {
@@ -28,7 +29,7 @@ class App extends React.Component {
             loggedInStatus: "LOGGED_IN",
             user: response.data.user,
           })
-          console.log("user id in app", this.state.user);
+          this.props.storeCurrentUser(response.data.user);
       }
       else if ( !response.data.logged_In & this.state.loggedInStatus=== "LOGGED_IN") {
         this.setState({
@@ -54,12 +55,12 @@ class App extends React.Component {
  }
 
  handleLogin(data) {
-   const { user } = data.user;
+   const { user } = data;
    this.setState({
      loggedInStatus: "LOGGED_IN",
      user,
    })
-  //  storeUser(this.state.user);
+   this.props.storeCurrentUser(this.state.user);
  }
  render() {
    const { user } = this.state;
@@ -76,14 +77,14 @@ class App extends React.Component {
         />
         
         <Route exact path={"/talks"}
-        render={props => (<Talks { ...props} user={user} loggedInStatus={this.state.loggedInStatus}/>)} />
+        render={props => (<Talks { ...props} user={this.props.user} loggedInStatus={this.state.loggedInStatus}/>)} />
         <Route exact path={"/schedule"} 
           render={props => (
             <Schedules { ...props} user={this.props.user} loggedInStatus={this.state.loggedInStatus}/>)}/>
           )} 
         />
         <Route exact path={"/talk"}
-        render={props => (<ShowTalk { ...props} user={user} loggedInStatus={this.state.loggedInStatus}/>)} />
+        render={props => (<ShowTalk { ...props} user={this.props.user} loggedInStatus={this.state.loggedInStatus}/>)} />
       </Switch>
     </BrowserRouter>
   </div>
@@ -97,7 +98,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  // storeUser: user => dispatch(storeUser(user))
+  storeCurrentUser: user => dispatch(storeUser(user))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(App);

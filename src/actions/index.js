@@ -9,7 +9,7 @@ const STORE_USER = 'store_user';
 
 const storeUser = user =>({
   type: STORE_USER,
-  user
+  user,
 })
 
 const addTalks = talks => ({

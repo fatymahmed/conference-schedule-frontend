@@ -20,7 +20,6 @@ componentDidMount() {
 }
 
 onFetchSuccess(data) {
-  console.log("data is", data);
   const { fetchSuccess, addTalks } = this.props;
   fetchSuccess();
   addTalks(data.data);
@@ -35,13 +34,10 @@ onFetchFailure(error) {
 }
 handleClick(talk){
 const talkInfo = talk;
-console.log(talkInfo);
   this.props.history.push({pathname: `/talk`, state: { talk: talkInfo}});
 }
 render() {
   const { talks, loggedInStatus, user, history } =this.props;
-  console.log("data intalks", user);
-
   return (
     <div>
       <HeaderTalks title='Talks'/>
