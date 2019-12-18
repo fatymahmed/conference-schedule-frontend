@@ -39,7 +39,7 @@ class Schedules extends React.Component {
     fetchOnGoing();
     get(this.onFetchSuccess, () => {}, `https://events-scheduler-api.herokuapp.com/${user.id}/schedules`);
     return (
-      <div style={{textAlign: 'center'}}>
+      <div style={{ textAlign: 'center' }}>
         <button className="button" type="submit" onClick={handleLogout}>Logout</button>
         {schedules.map(talk => (
           <Talk
