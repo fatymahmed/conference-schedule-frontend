@@ -27,14 +27,24 @@ export default class Home extends React.Component {
      })
   }
   render() {
+    const { user } = this.props;
+    if(Object.keys(user).length === 0){
     return(
       <div>
-        <button onClick={ () =>this.handleLogoutClick()}>Logout</button>
         <Registration handleSuccessfulAuth={this.handleSuccessfulAuth}/>
         <p className='signInText'>Already have an account?</p>
         <button >Sign In</button>
         <Login handleSuccessfulAuth={this.handleSuccessfulAuth}/>
       </div>
     )
+    }
+    else{
+      return(
+        <div>
+          <p style={{textAlign: 'center', paddingTop: 10}}>You are already logged In</p>
+          <button onClick={ () =>this.handleLogoutClick()}>Logout</button>
+        </div>
+      )
+    }
   }
 }

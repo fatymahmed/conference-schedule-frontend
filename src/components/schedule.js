@@ -7,9 +7,10 @@ import { get } from '../services/api-service';
 
 class Schedules extends React.Component{
   constructor(props){
-    super(props);  
+    super(props);
   this.onFetchFailure = this.onFetchFailure.bind(this);
   this.onFetchSuccess = this.onFetchSuccess.bind(this);
+  this.handleLogin = this.handleLogin.bind(this);
   }
 
 onFetchSuccess(data) {
@@ -22,9 +23,23 @@ onFetchFailure(error) {
   const { fetchFailure } = this.props;
   fetchFailure();
 }
+
+handleLogin(){
+  this.props.history.push('/');
+}
 render() {
   const { fetchOnGoing } = this.props;
   const { schedules, user } =this.props
+  if(Object.keys(user).length === 0){
+  return(
+    <div>
+  <p style={{paddingTop: 20, textAlign: 'center'}}>Please log in to view your schedule</p>
+     <button onClick={this.handleLogin}>Log in</button>
+    </div>
+  
+  )
+  }
+  else{
   fetchOnGoing();
   get(this.onFetchSuccess, this.onFetchFailure, `http://localhost:3001/${user.id}/schedules`);
   return (
@@ -33,6 +48,7 @@ render() {
           <Talk key= {index} talk={talk} user={user}/>)}
     </div>
   )
+  }
   };
 };
 

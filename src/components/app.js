@@ -52,6 +52,7 @@ class App extends React.Component {
     loggedInStatus: "NOT_LOGGED_IN",
     user: {},
    })
+   this.props.storeCurrentUser({});
  }
 
  handleLogin(data) {
@@ -72,7 +73,7 @@ class App extends React.Component {
           exact 
           path={"/"} 
           render={props => (
-            <Home { ...props} handleLogin={this.handleLogin} handleLogout={this.handleLogout} loggedInStatus={this.state.loggedInStatus}/>
+            <Home { ...props} user={this.props.user} handleLogin={this.handleLogin} handleLogout={this.handleLogout} loggedInStatus={this.state.loggedInStatus}/>
           )} 
         />
         
