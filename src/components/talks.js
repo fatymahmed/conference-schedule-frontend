@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Talk from './talk';
 import HeaderTalks from './headerTalks';
 import {
@@ -27,18 +28,20 @@ class Talks extends React.Component {
     addTalks(data.data);
   }
 
-  mySchedule() {
-    this.props.history.push('/schedule');
-  }
-
   onFetchFailure(error) {
     const { fetchFailure } = this.props;
-    fetchFailure();
+    fetchFailure(error);
+  }
+
+  mySchedule() {
+    const { history } = this.props;
+    history.push('/schedule');
   }
 
   handleClick(talk) {
+    const { history } = this.props;
     const talkInfo = talk;
-    this.props.history.push({ pathname: '/talk', state: { talk: talkInfo } });
+    history.push({ pathname: '/talk', state: { talk: talkInfo } });
   }
 
   render() {
@@ -46,15 +49,32 @@ class Talks extends React.Component {
     return (
       <div>
         <HeaderTalks title="Talks" />
-        <button onClick={this.mySchedule}>My schedule</button>
-        <div style={{ backgroundColor: '#F8F8FF' }}>
-          {talks.map((talk, index) => <Talk onClick={(i) => this.handleClick(i)} key={index} talk={talk} user={user} />)}
+        <button type="submit" onClick={this.mySchedule}>My schedule</button>
+        <div style={{ backgroundColor: '#F8F8FF', textAlign: 'center' }}>
+          {talks.map(talk => (
+            <Talk
+              onClick={(i) => this.handleClick(i)}
+              key={talk.title}
+              talk={talk}
+              user={user}
+            />
+          ))}
         </div>
       </div>
 
     );
   }
 }
+
+Talks.propTypes = {
+  history: PropTypes.instanceOf(Object).isRequired,
+  talks: PropTypes.instanceOf(Array).isRequired,
+  user: PropTypes.instanceOf(Object).isRequired,
+  fetchOnGoing: PropTypes.func.isRequired,
+  addTalks: PropTypes.func.isRequired,
+  fetchSuccess: PropTypes.func.isRequired,
+  fetchFailure: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = (state) => ({
   talks: state.talks,

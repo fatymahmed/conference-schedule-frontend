@@ -1,25 +1,34 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './style.css';
 import changeDateFormat from '../helper';
 
-const Talk = (props) => (
-  <div onClick={() => props.onClick(props.talk)} className="talkContainer">
-    <p className="timeDate">{changeDateFormat(props.talk.startTime).date}</p>
-    <p className="timeDate">
-      {changeDateFormat(props.talk.startTime).time}
-      {' '}
+const Talk = (props) => {
+  const { talk, onClick } = props;
+  return (
+    <div className="talkContainer">
+      <p className="timeDate">{changeDateFormat(talk.startTime).date}</p>
+      <p className="timeDate">
+        {changeDateFormat(talk.startTime).time}
+        {' '}
 -
-      {' '}
-      {changeDateFormat(props.talk.endTime).time}
-    </p>
-    <div className="talk">
-      <h4>{props.talk.title}</h4>
-      <div className="speakerLocation">
-        <p>{props.talk.speakers[0]}</p>
-        <p>{props.talk.location}</p>
-      </div>
+        {' '}
+        {changeDateFormat(talk.endTime).time}
+      </p>
+      <button type="submit" onClick={() => onClick(talk)} className="talk">
+        <h4>{talk.title}</h4>
+        <div className="speakerLocation">
+          <p>{talk.speakers[0]}</p>
+          <p>{talk.location}</p>
+        </div>
+      </button>
     </div>
-  </div>
-);
+  );
+};
+
+Talk.propTypes = {
+  talk: PropTypes.instanceOf(Object).isRequired,
+  onClick: PropTypes.func.isRequired,
+};
 
 export default Talk;

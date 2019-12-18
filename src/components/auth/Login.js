@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import '../style.css';
 
 export default class Login extends React.Component {
@@ -18,6 +19,7 @@ export default class Login extends React.Component {
 
   handleSubmit(event) {
     const { email, password } = this.state;
+    const { handleLogin, history } = this.props;
     axios.post('https://events-scheduler-api.herokuapp.com/sessions', {
       user: {
         email,
@@ -26,8 +28,8 @@ export default class Login extends React.Component {
     })
       .then((response) => {
         if (response.data.logged_in) {
-          this.props.handleLogin(response.data);
-          this.props.history.push('/talks');
+          handleLogin(response.data);
+          history.push('/talks');
         } else if (response.data.status === 401) {
           this.setState({
             errors: "Account doesn't exist, please sign up",
@@ -43,11 +45,12 @@ export default class Login extends React.Component {
   }
 
   handleLogoutClick() {
+    const { handleLogout, history } = this.props;
     axios.delete('https://events-scheduler-api.herokuapp.com/logout',
       { withCredentials: true })
-      .then((response) => {
-        this.props.handleLogout();
-        this.props.history.push('/login');
+      .then(() => {
+        handleLogout();
+        history.push('/login');
       })
       .catch((error) => {
         this.setState({
@@ -64,7 +67,7 @@ export default class Login extends React.Component {
 
   render() {
     const { user } = this.props;
-    const { errors } = this.state;
+    const { errors, password, email } = this.state;
     if (Object.keys(user).length === 0) {
       if (errors !== '') {
         return (
@@ -75,13 +78,13 @@ export default class Login extends React.Component {
         <div>
           <h2 style={{ color: 'rgb(0, 0, 128)', textAlign: 'center', marginTop: 10 }}>Login</h2>
           <form onSubmit={this.handleSubmit}>
-            <label htmlFor="email">Username</label>
+            <p>Username</p>
             <br />
-            <input type="text" name="email" value={this.state.email} onChange={this.handleChange} required />
+            <input type="text" name="email" value={email} onChange={this.handleChange} required />
             <br />
-            <label htmlFor="password">Password</label>
+            <p>Password</p>
             <br />
-            <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required />
+            <input type="password" name="password" value={password} onChange={this.handleChange} required />
             <button type="submit">Login</button>
           </form>
         </div>
@@ -91,8 +94,15 @@ export default class Login extends React.Component {
     return (
       <div>
         <p style={{ textAlign: 'center', paddingTop: 10 }}>You are already logged In</p>
-        <button onClick={() => this.handleLogoutClick()}>Logout</button>
+        <button type="submit" onClick={this.handleLogoutClick}>Logout</button>
       </div>
     );
   }
 }
+
+Login.propTypes = {
+  history: PropTypes.instanceOf(Object).isRequired,
+  user: PropTypes.instanceOf(Object).isRequired,
+  handleLogin: PropTypes.func.isRequired,
+  handleLogout: PropTypes.func.isRequired,
+};

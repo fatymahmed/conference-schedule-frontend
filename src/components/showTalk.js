@@ -21,9 +21,8 @@ class ShowTalk extends React.Component {
   }
 
   createSchedule() {
-    const { location } = this.props;
+    const { location, user } = this.props;
     const { talk } = location.state;
-    const { user } = this.props;
     return ({
       user_id: user.id,
       talk_id: talk.id,
