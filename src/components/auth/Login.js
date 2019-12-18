@@ -32,7 +32,7 @@ export default class Login extends React.Component {
           history.push('/talks');
         } else if (response.data.status === 401) {
           this.setState({
-            errors: "Account doesn't exist, please sign up",
+            errors: "The username and password don't match, if you dont have an account, please sign up",
           });
         }
       })
@@ -85,6 +85,7 @@ export default class Login extends React.Component {
             <p>Password</p>
             <br />
             <input type="password" name="password" value={password} onChange={this.handleChange} required />
+            <br />
             <button type="submit">Login</button>
           </form>
         </div>
