@@ -33,7 +33,7 @@ label{
   color: darkcyan;
 }
 
-button{
+.button{
     margin:5px auto;
     display: block;
     background-color: #5CBA47;
@@ -43,7 +43,7 @@ button{
     border-radius: 5px;
 }
 
-button:hover{
+.button:hover{
     cursor: pointer;
 }
 

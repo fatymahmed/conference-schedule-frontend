@@ -7,44 +7,44 @@ const ADD_SCHEDULES = 'add_schedules';
 const REMOVE_SCHEDULE = 'remove_schedule';
 const STORE_USER = 'store_user';
 
-const storeUser = user =>({
+const storeUser = (user) => ({
   type: STORE_USER,
   user,
-})
+});
 
-const addTalks = talks => ({
-  type: ADD_TALKS,  
+const addTalks = (talks) => ({
+  type: ADD_TALKS,
   talks,
-})
+});
 
-const removeTalk = id => ({
+const removeTalk = (id) => ({
   type: REMOVE_TALK,
   id,
-})
+});
 
-const addSchedules = schedule => ({
-  type: ADD_SCHEDULES,  
+const addSchedules = (schedule) => ({
+  type: ADD_SCHEDULES,
   schedule,
-})
-const storeSchedules = schedules => ({
-  type: ADD_SCHEDULES,  
+});
+const storeSchedules = (schedules) => ({
+  type: ADD_SCHEDULES,
   schedules,
-})
-const removeSchedule = id => ({
+});
+const removeSchedule = (id) => ({
   type: REMOVE_SCHEDULE,
   id,
-})
+});
 const fetchSuccess = () => ({
   type: FETCH_SUCCESS,
-})
+});
 
 const fetchFailure = () => ({
   type: FETCH_ERROR,
-})
+});
 
 const fetchOnGoing = () => ({
   type: PROCESSING,
-})
+});
 
 export {
   addTalks,
@@ -60,4 +60,4 @@ export {
   removeSchedule,
   storeUser,
   STORE_USER,
-}
+};
