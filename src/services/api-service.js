@@ -11,7 +11,7 @@ const get = (onSuccess, onError, apiURL) => {
 };
 
 const post = ( onSuccess, onError, data) => {
-  fetch('http://localhost:3001/schedules', {
+  fetch('https://events-scheduler-api.herokuapp.com/schedules', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json', 

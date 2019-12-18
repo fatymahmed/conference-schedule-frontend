@@ -20,7 +20,7 @@ export default class Home extends React.Component {
     this.props.history.push('/login');
   }
   handleLogoutClick() {
-    axios.delete("http://localhost:3001/logout", 
+    axios.delete("https://events-scheduler-api.herokuapp.com/logout", 
     { withCredentials: true })
     .then(response => { 
       this.props.handleLogout();
@@ -36,7 +36,6 @@ export default class Home extends React.Component {
       <div>
         <Registration handleSuccessfulAuth={this.handleSuccessfulAuth}/>
         <p className='signInText'>Already have an account?</p>
-        <a href=""></a>
         <p className='signInLink' onClick={this.handleLogin}>Sign In</p>
       </div>
     )

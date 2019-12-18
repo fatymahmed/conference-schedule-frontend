@@ -11,7 +11,6 @@ class Schedules extends React.Component{
   this.onFetchFailure = this.onFetchFailure.bind(this);
   this.onFetchSuccess = this.onFetchSuccess.bind(this);
   this.handleLogin = this.handleLogin.bind(this);
-  // this.handleLogoutClick = this.handleLogoutClick.bind(this);
   }
 
 onFetchSuccess(data) {
@@ -42,7 +41,7 @@ render() {
   }
   else{
   fetchOnGoing();
-  get(this.onFetchSuccess, this.onFetchFailure, `http://localhost:3001/${user.id}/schedules`);
+  get(this.onFetchSuccess, this.onFetchFailure, `https://events-scheduler-api.herokuapp.com/${user.id}/schedules`);
   return (
     <div>
       <button onClick={this.props.handleLogout}>Logout</button>

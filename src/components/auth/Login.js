@@ -18,30 +18,35 @@ export default class Login extends React.Component {
 
   handleSubmit(event) {
     const { email, password } = this.state;
-
-    axios.post("http://localhost:3001/sessions", {
+    axios.post("https://events-scheduler-api.herokuapp.com/sessions", {
       user: {
         email,
         password,
       }
     },
-    {
-      withCredentials: true  })
+      )
       .then(response => {
         if (response.data.logged_in){
           this.props.handleLogin(response.data);
           this.props.history.push('/talks')
         }
+        else if(response.data.status===401){
+          this.setState({
+            loginErrors: "Account doesn't exist, please sign up",
+          })
+        }
       })
       .catch( error => {
-          console.log("login error", error)
+        this.setState({
+          loginErrors: error,
+        })
         })
     event.preventDefault();
 
   }
 
   handleLogoutClick() {
-    axios.delete("http://localhost:3001/logout", 
+    axios.delete("https://events-scheduler-api.herokuapp.com/logout", 
     { withCredentials: true })
     .then(response => { 
       this.props.handleLogout();
@@ -59,7 +64,13 @@ export default class Login extends React.Component {
   }
     render() {
       const { user } = this.props;
+      const { loginErrors } = this.state;
       if(Object.keys(user).length === 0){
+        if(loginErrors!==''){
+          return(
+            <h2 style={{textAlign: 'center', color: 'red'}}>{loginErrors}</h2>
+          )
+        }
         return(
           <div>
             <h2 style={{color: 'rgb(0, 0, 128)', textAlign: 'center', marginTop: 10}}>Login</h2>

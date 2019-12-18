@@ -16,7 +16,7 @@ class Talks extends React.Component{
 componentDidMount() {
   const { fetchOnGoing } = this.props;
   fetchOnGoing();
-  get(this.onFetchSuccess, this.onFetchFailure, 'http://localhost:3001/talks');
+  get(this.onFetchSuccess, this.onFetchFailure, 'https://events-scheduler-api.herokuapp.com/talks');
 }
 
 onFetchSuccess(data) {
@@ -37,7 +37,7 @@ const talkInfo = talk;
   this.props.history.push({pathname: `/talk`, state: { talk: talkInfo}});
 }
 render() {
-  const { talks, loggedInStatus, user, history } =this.props;
+  const { talks, user } =this.props;
   return (
     <div>
       <HeaderTalks title='Talks'/>

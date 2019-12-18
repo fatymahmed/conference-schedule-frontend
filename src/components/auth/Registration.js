@@ -19,15 +19,16 @@ export default class Registration extends React.Component {
   handleSubmit(event) {
     const { email, password, password_confirmation } = this.state;
 
-    axios.post("http://localhost:3001/registrations", {
+    axios.post("https://events-scheduler-api.herokuapp.com/registrations", {
       user: {
         email,
         password,
         password_confirmation,
       }
     },
-    {
-      withCredentials: true  })
+    // {
+    //   withCredentials: true  }
+      )
       .then(response => {
         if (response.data.status === "created"){
           this.props.handleSuccessfulAuth(response.data);
@@ -51,8 +52,8 @@ export default class Registration extends React.Component {
         <h2 style={{color: '#000080', textAlign: 'center'}}>Sign Up</h2>
         <form onSubmit={this.handleSubmit}>
           <div>
-          <label htmlFor="name">Username</label><br/>
-          <input  type= "text" name="name" value={this.state.email} onChange={this.handleChange} required/><br/>
+          <label htmlFor="email">Username</label><br/>
+          <input  type= "text" name="email" value={this.state.email} onChange={this.handleChange} required/><br/>
           </div>
          <div>
          <label htmlFor="email">Password</label><br/>

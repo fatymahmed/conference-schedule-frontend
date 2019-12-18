@@ -22,8 +22,8 @@ class App extends React.Component {
  }
  
  checkLoginStatus() {
-    axios.get("http://localhost:3001/logged_in",
-    { withCredentials: true })
+    axios.get("https://events-scheduler-api.herokuapp.com/logged_in",
+    )
     .then(response => {
       if (response.data.logged_in && this.state.loggedInStatus === "NOT_LOGGED_IN") {
         this.setState({
@@ -65,7 +65,6 @@ class App extends React.Component {
    this.props.storeCurrentUser(this.state.user);
  }
  render() {
-   const { user } = this.state;
    return(
     <div>
     <BrowserRouter>
