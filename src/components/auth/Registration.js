@@ -49,7 +49,7 @@ export default class Registration extends React.Component {
     return(
       <div style={{backgroundColor: 'white', }}>
         <h2 style={{color: '#000080', textAlign: 'center'}}>Sign Up</h2>
-        <form onSubmit={this.handleSubmit} style={{textAlign: 'center'}}>
+        <form onSubmit={this.handleSubmit}>
           <div>
           <label htmlFor="name">Username</label><br/>
           <input  type= "text" name="name" value={this.state.email} onChange={this.handleChange} required/><br/>

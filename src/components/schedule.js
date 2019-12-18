@@ -11,6 +11,7 @@ class Schedules extends React.Component{
   this.onFetchFailure = this.onFetchFailure.bind(this);
   this.onFetchSuccess = this.onFetchSuccess.bind(this);
   this.handleLogin = this.handleLogin.bind(this);
+  this.handleLogoutClick = this.handleLogoutClick.bind(this);
   }
 
 onFetchSuccess(data) {

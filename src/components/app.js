@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 import Talks from './talks';
+import Login from './auth/Login';
 import Home from './Home';
 import Schedules from './schedule';
 import { connect } from 'react-redux';
@@ -79,6 +80,8 @@ class App extends React.Component {
         
         <Route exact path={"/talks"}
         render={props => (<Talks { ...props} user={this.props.user} loggedInStatus={this.state.loggedInStatus}/>)} />
+        <Route exact path={"/login"}
+        render={props => (<Login { ...props} handleLogout={this.handleLogout} handleLogin={this.handleLogin} user={this.props.user} loggedInStatus={this.state.loggedInStatus}/>)} />
         <Route exact path={"/schedule"} 
           render={props => (
             <Schedules { ...props} user={this.props.user} loggedInStatus={this.state.loggedInStatus}/>)}/>

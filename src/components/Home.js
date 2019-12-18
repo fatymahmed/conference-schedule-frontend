@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import Registration from './auth/Registration';
-import Login from './auth/Login';
 import './style.css';
 
 export default class Home extends React.Component {
@@ -9,6 +8,7 @@ export default class Home extends React.Component {
     super(props);
     this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
     this.handleLogoutClick = this.handleLogoutClick.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
   }
 
   handleSuccessfulAuth(data) {
@@ -16,6 +16,9 @@ export default class Home extends React.Component {
     this.props.history.push('/talks');
   }
 
+  handleLogin(){
+    this.props.history.push('/login');
+  }
   handleLogoutClick() {
     axios.delete("http://localhost:3001/logout", 
     { withCredentials: true })
@@ -33,8 +36,7 @@ export default class Home extends React.Component {
       <div>
         <Registration handleSuccessfulAuth={this.handleSuccessfulAuth}/>
         <p className='signInText'>Already have an account?</p>
-        <button >Sign In</button>
-        <Login handleSuccessfulAuth={this.handleSuccessfulAuth}/>
+        <button onClick={this.handleLogin}>Sign In</button>
       </div>
     )
     }
