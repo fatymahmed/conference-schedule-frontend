@@ -10,7 +10,6 @@ const changeDateFormat = (Time) => {
     date.push(temp[0]);
     date.push(temp[1]);
     date.push(temp[2]);
-    console.log("date is", date);
     time.push(temp[3])
     time.push(temp[4])
     return ({

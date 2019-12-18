@@ -1,7 +1,6 @@
 const get = (onSuccess, onError, apiURL) => {
   fetch(apiURL, {method: 'GET'}).then(result => result.json())
   .then((result) => {
-    // console.log(result);
     if (result.error) {
       onError();
     }
@@ -40,5 +39,4 @@ export {
   post,
   get,
   remove,
-  get1,
 }
