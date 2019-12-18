@@ -26,8 +26,6 @@ export default class Registration extends React.Component {
         password_confirmation,
       }
     },
-    // {
-    //   withCredentials: true  }
       )
       .then(response => {
         if (response.data.status === "created"){
@@ -35,8 +33,10 @@ export default class Registration extends React.Component {
         }
       })
       .catch( error => {
-          console.log("regis error", error)
+        this.setState({
+          registrationErrors: error,
         })
+      })
     event.preventDefault();
 
   }
@@ -47,6 +47,12 @@ export default class Registration extends React.Component {
     })
   }
     render() {
+      const { registrationErrors } = this.state;
+      if(registrationErrors!==''){
+        return(
+          <h2 style={{textAlign: 'center', color: 'red'}}>{registrationErrors}</h2>
+        )
+      }
     return(
       <div style={{backgroundColor: 'white', }}>
         <h2 style={{color: '#000080', textAlign: 'center'}}>Sign Up</h2>

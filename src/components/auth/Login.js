@@ -9,7 +9,7 @@ export default class Login extends React.Component {
     this.state = {
       email: '',
       password: '',
-      loginErrors: '',
+      errors: '',
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -32,13 +32,13 @@ export default class Login extends React.Component {
         }
         else if(response.data.status===401){
           this.setState({
-            loginErrors: "Account doesn't exist, please sign up",
+            errors: "Account doesn't exist, please sign up",
           })
         }
       })
       .catch( error => {
         this.setState({
-          loginErrors: error,
+          errors: error,
         })
         })
     event.preventDefault();
@@ -53,8 +53,10 @@ export default class Login extends React.Component {
       this.props.history.push('/login')
      })
      .catch(error => {
-       console.log("logout error", error);
-     })
+      this.setState({
+        errors: error,
+      })
+    })
   }
 
   handleChange(event) {
@@ -64,11 +66,11 @@ export default class Login extends React.Component {
   }
     render() {
       const { user } = this.props;
-      const { loginErrors } = this.state;
+      const { errors } = this.state;
       if(Object.keys(user).length === 0){
-        if(loginErrors!==''){
+        if(errors!==''){
           return(
-            <h2 style={{textAlign: 'center', color: 'red'}}>{loginErrors}</h2>
+            <h2 style={{textAlign: 'center', color: 'red'}}>{errors}</h2>
           )
         }
         return(

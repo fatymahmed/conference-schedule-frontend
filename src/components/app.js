@@ -15,7 +15,8 @@ class App extends React.Component {
    super();
    this.state = {
      loggedInStatus: "NOT_LOGGED_IN",
-     user: {}
+     user: {},
+     errors: '',
    }
    this.handleLogin = this.handleLogin.bind(this);
    this.handleLogout = this.handleLogout.bind(this);
@@ -40,8 +41,10 @@ class App extends React.Component {
       }
     })
     .catch(error => {
-      console.log("Check login error", error);
-    })
+      this.setState({
+        errors: error,
+      })
+      })
  }
 
  componentDidMount(){
@@ -65,6 +68,12 @@ class App extends React.Component {
    this.props.storeCurrentUser(this.state.user);
  }
  render() {
+   const { errors} = this.state;
+  if(errors!==''){
+    return(
+      <h2 style={{textAlign: 'center', color: 'red'}}>{errors}</h2>
+    )
+  }
    return(
     <div>
     <BrowserRouter>

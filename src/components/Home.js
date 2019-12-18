@@ -6,6 +6,9 @@ import './style.css';
 export default class Home extends React.Component {
   constructor(props){
     super(props);
+    this.state={
+      logoutErrors: '',
+    }
     this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
     this.handleLogoutClick = this.handleLogoutClick.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
@@ -26,11 +29,19 @@ export default class Home extends React.Component {
       this.props.handleLogout();
      })
      .catch(error => {
-       console.log("logout error", error);
-     })
+      this.setState({
+        errors: error,
+      })
+  })
   }
   render() {
     const { user } = this.props;
+    const { logoutErrors }= this.state;
+    if(logoutErrors!==''){
+      return(
+        <h2 style={{textAlign: 'center', color: 'red'}}>{logoutErrors}</h2>
+      )
+    }
     if(Object.keys(user).length === 0){
     return(
       <div>
