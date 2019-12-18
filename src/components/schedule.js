@@ -11,7 +11,7 @@ class Schedules extends React.Component{
   this.onFetchFailure = this.onFetchFailure.bind(this);
   this.onFetchSuccess = this.onFetchSuccess.bind(this);
   this.handleLogin = this.handleLogin.bind(this);
-  this.handleLogoutClick = this.handleLogoutClick.bind(this);
+  // this.handleLogoutClick = this.handleLogoutClick.bind(this);
   }
 
 onFetchSuccess(data) {
@@ -45,6 +45,7 @@ render() {
   get(this.onFetchSuccess, this.onFetchFailure, `http://localhost:3001/${user.id}/schedules`);
   return (
     <div>
+      <button onClick={this.props.handleLogout}>Logout</button>
        {schedules.map( (talk,index) => 
           <Talk key= {index} talk={talk} user={user}/>)}
     </div>

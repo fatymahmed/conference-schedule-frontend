@@ -1,10 +1,36 @@
 import React  from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import HeaderTalks from './headerTalks';
+import { post } from '../services/api-service';
 import changeDateFormat from '../helper';
+import { addSchedules } from '../actions/index';
+import './style.css';
 
-export default class ShowTalk extends React.Component{
+class ShowTalk extends React.Component{
   constructor(props){
     super(props);
+    this.createSchedule = this.createSchedule.bind(this);
+    this.onSuccessPost = this.onSuccessPost.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  createSchedule(){
+    const { talk } = this.props.location.state;
+    const { user } = this.props;
+    return({
+      user_id: user.id,
+      talk_id: talk.id,
+    })
+  }
+
+  onSuccessPost = (data) => {
+    const { addSchedules } = this.props;
+    addSchedules(data);
+  }
+
+  handleSubmit = () => {
+  post(this.onSuccessPost, () => {}, this.createSchedule());
+  this.props.history.push('/schedule');
   }
 
 render() {
@@ -37,6 +63,16 @@ render() {
           return (<p className='speaker' key={i}>{speaker}</p>)
         })}
       </div>
+      <button onClick={this.handleSubmit}>Add to schedule</button>
     </div>
   )}
 }
+ShowTalk.propTypes = {
+  addSchedules: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = dispatch => ({
+  addSchedules: schedule => dispatch(addSchedules(schedule)),
+});
+
+export default connect(null,mapDispatchToProps)(ShowTalk);

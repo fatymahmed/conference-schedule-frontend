@@ -62,7 +62,7 @@ export default class Login extends React.Component {
       if(Object.keys(user).length === 0){
         return(
           <div>
-            <h4 style={{color: 'rgb(0, 0, 128)', textAlign: 'center', marginTop: 10}}>Login</h4>
+            <h2 style={{color: 'rgb(0, 0, 128)', textAlign: 'center', marginTop: 10}}>Login</h2>
             <form onSubmit={this.handleSubmit}>
             <label htmlFor="email">Username</label><br/>
             <input  type= "text" name="email" value={this.state.email} onChange={this.handleChange} required/><br/>

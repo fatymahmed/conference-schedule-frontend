@@ -41,9 +41,9 @@ render() {
   return (
     <div>
       <HeaderTalks title='Talks'/>
+      <button onClick = {this.mySchedule}>My schedule</button>
       <div style={{backgroundColor: '#F8F8FF'}}>
         {talks.map((talk,index) => <Talk onClick={i => this.handleClick(i)} key={index} talk={talk} user={user}/>)}
-        <button onClick = {this.mySchedule}>My schedule</button>
       </div>
     </div>
     

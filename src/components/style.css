@@ -22,6 +22,16 @@ label{
     opacity: 0.6;
     text-align: center;
 }
+.signInLink{
+    text-align: center;
+    margin-top: 5px;
+}
+
+.signInLink:hover{
+  text-decoration: underline;
+  cursor: pointer;
+  color: darkcyan;
+}
 
 button{
     margin:5px auto;
@@ -30,6 +40,11 @@ button{
     color: white;
     padding: 5px;
     border: 1px solid #5CBA47;
+    border-radius: 5px;
+}
+
+button:hover{
+    cursor: pointer;
 }
 
 .talkContainer{
@@ -45,7 +60,7 @@ button{
     padding: 10px 0;
     border: 1px solid #e5faf8;
     border-radius: 2px;
-    width: 250px;
+    width: 300px;
     margin: 10px auto;
 }
 .talk p,h4{
