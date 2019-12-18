@@ -1,3 +1,24 @@
+## Conference schedule
+The react app allows 
+- users to view available talks,
+- logged-in users to add talks to their schedule,
+- logged-in users to view their schedule.
+
+The app also uses a Rails [API](https://events-scheduler-api.herokuapp.com), which can be found [here](https://github.com/fatymahmed/schedule-backend) that stores the data of the users, talks and schedules.
+
+### Technologies used
+- React
+- Redux
+- Rails
+
+The [live](https://conference-schedule-app.herokuapp.com/login) version of the app
+
+### Authors
+
+- Fatima Ahmed [github](https://github.com/fatymahmed)
+
+- The design of the app was inspired by [Ibrahim Shaqura](https://www.behance.net/ibshaqura)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
