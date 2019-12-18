@@ -68,7 +68,7 @@ class ShowTalk extends React.Component {
         </div>
         <div className="talkSpeakers">
           <p>Speakers</p>
-          {talk.speakers.map((speaker) => (<p className="speaker" key={speaker}>{speaker}</p>))}
+          {talk.speakers.map(speaker => (<p className="speaker" key={speaker}>{speaker}</p>))}
         </div>
         <button className="button" type="submit" onClick={this.handleSubmit}>Add to schedule</button>
       </div>
@@ -83,8 +83,8 @@ ShowTalk.propTypes = {
 
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  addSchedules: (schedule) => dispatch(addSchedules(schedule)),
+const mapDispatchToProps = dispatch => ({
+  addSchedules: schedule => dispatch(addSchedules(schedule)),
 });
 
 export default connect(null, mapDispatchToProps)(ShowTalk);

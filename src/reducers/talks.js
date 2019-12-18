@@ -5,7 +5,7 @@ const talks = (state = [], action) => {
     case ADD_TALKS:
       return action.talks;
     case REMOVE_TALK:
-      return (state.filter((x) => x.id !== action.id));
+      return (state.filter(x => x.id !== action.id));
     default:
       return state;
   }

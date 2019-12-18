@@ -41,7 +41,7 @@ class Schedules extends React.Component {
     return (
       <div>
         <button className="button" type="submit" onClick={handleLogout}>Logout</button>
-        {schedules.map((talk) => (
+        {schedules.map(talk => (
           <Talk
             key={talk.title}
             talk={talk}
@@ -64,13 +64,13 @@ Schedules.propTypes = {
 
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   schedules: state.schedules,
 });
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   fetchOnGoing: () => dispatch(fetchOnGoing()),
   fetchSuccess: () => dispatch(fetchSuccess()),
-  storeSchedules: (schedules) => dispatch(storeSchedules(schedules)),
+  storeSchedules: schedules => dispatch(storeSchedules(schedules)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Schedules);

@@ -7,30 +7,30 @@ const ADD_SCHEDULES = 'add_schedules';
 const REMOVE_SCHEDULE = 'remove_schedule';
 const STORE_USER = 'store_user';
 
-const storeUser = (user) => ({
+const storeUser = user => ({
   type: STORE_USER,
   user,
 });
 
-const addTalks = (talks) => ({
+const addTalks = talks => ({
   type: ADD_TALKS,
   talks,
 });
 
-const removeTalk = (id) => ({
+const removeTalk = id => ({
   type: REMOVE_TALK,
   id,
 });
 
-const addSchedules = (schedule) => ({
+const addSchedules = schedule => ({
   type: ADD_SCHEDULES,
   schedule,
 });
-const storeSchedules = (schedules) => ({
+const storeSchedules = schedules => ({
   type: ADD_SCHEDULES,
   schedules,
 });
-const removeSchedule = (id) => ({
+const removeSchedule = id => ({
   type: REMOVE_SCHEDULE,
   id,
 });

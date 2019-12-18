@@ -83,7 +83,7 @@ class App extends React.Component {
             <Route
               exact
               path="/"
-              render={(props) => (
+              render={props => (
                 <Home
                   {...props}
                   user={user}
@@ -97,7 +97,7 @@ class App extends React.Component {
             <Route
               exact
               path="/talks"
-              render={(props) => (
+              render={props => (
                 <Talks
                   {...props}
                   user={user}
@@ -108,7 +108,7 @@ class App extends React.Component {
             <Route
               exact
               path="/login"
-              render={(props) => (
+              render={props => (
                 <Login
                   {...props}
                   handleLogout={this.handleLogout}
@@ -121,7 +121,7 @@ class App extends React.Component {
             <Route
               exact
               path="/schedule"
-              render={(props) => (
+              render={props => (
                 <Schedules
                   {...props}
                   user={user}
@@ -135,7 +135,7 @@ class App extends React.Component {
             <Route
               exact
               path="/talk"
-              render={(props) => (
+              render={props => (
                 <ShowTalk
                   {...props}
                   user={user}
@@ -154,12 +154,12 @@ App.propTypes = {
   storeCurrentUser: PropTypes.func.isRequired,
   user: PropTypes.objectOf(PropTypes.object).isRequired,
 };
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.user,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  storeCurrentUser: (user) => dispatch(storeUser(user)),
+const mapDispatchToProps = dispatch => ({
+  storeCurrentUser: user => dispatch(storeUser(user)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

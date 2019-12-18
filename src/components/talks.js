@@ -53,7 +53,7 @@ class Talks extends React.Component {
         <div style={{ backgroundColor: '#F8F8FF', textAlign: 'center' }}>
           {talks.map(talk => (
             <Talk
-              onClick={(i) => this.handleClick(i)}
+              onClick={i => this.handleClick(i)}
               key={talk.title}
               talk={talk}
               user={user}
@@ -76,15 +76,15 @@ Talks.propTypes = {
   fetchFailure: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   talks: state.talks,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   fetchOnGoing: () => dispatch(fetchOnGoing()),
   fetchFailure: () => dispatch(fetchFailure()),
   fetchSuccess: () => dispatch(fetchSuccess()),
-  addTalks: (talks) => dispatch(addTalks(talks)),
+  addTalks: talks => dispatch(addTalks(talks)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Talks);
