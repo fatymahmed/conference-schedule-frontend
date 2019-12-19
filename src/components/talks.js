@@ -49,7 +49,7 @@ class Talks extends React.Component {
     return (
       <div>
         <HeaderTalks title="Talks" />
-        <button type="submit" onClick={this.mySchedule}>My schedule</button>
+        <button type="submit" style={{ display: 'block', margin: 'auto' }} onClick={this.mySchedule}>My schedule</button>
         <div style={{ backgroundColor: '#F8F8FF', textAlign: 'center' }}>
           {talks.map(talk => (
             <Talk
