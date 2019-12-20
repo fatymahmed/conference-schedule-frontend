@@ -6,7 +6,7 @@ import rootReducer from './reducers/index';
 import './index.css';
 import App from './components/app';
 
-const store = createStore(rootReducer, { talks: [], schedules: [], user: {} });
+const store = createStore(rootReducer, { talks: [], user: {} });
 
 ReactDOM.render(
   <Provider store={store}>

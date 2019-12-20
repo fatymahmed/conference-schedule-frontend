@@ -9,6 +9,17 @@ const get = (onSuccess, onError, apiURL) => {
     }).catch(error => onError(error));
 };
 
+const get1 = (apiURL) => {
+  fetch(apiURL, { method: 'GET' }).then(result => result.json())
+    .then((result) => {
+      if (result.error) {
+        console.log(result.error);
+      } else {
+        return result;
+      }
+    }).catch(error => console.log(error));
+};
+
 const post = (onSuccess, onError, data, apiURL) => {
   fetch(apiURL, {
     method: 'POST',
@@ -40,5 +51,6 @@ const remove = (onSuccess, onError, apiURL) => {
 export {
   post,
   get,
+  get1,
   remove,
 };

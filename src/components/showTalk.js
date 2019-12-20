@@ -1,24 +1,17 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import HeaderTalks from './headerTalks';
 import { post } from '../services/api-service';
 import changeDateFormat from '../helper';
-import { addSchedules } from '../actions/index';
 import './style.css';
 
-class ShowTalk extends React.Component {
+export default class ShowTalk extends React.Component {
   constructor(props) {
     super(props);
     this.createSchedule = this.createSchedule.bind(this);
-    this.onSuccessPost = this.onSuccessPost.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  onSuccessPost(data) {
-    const { addSchedules } = this.props;
-    addSchedules(data);
-  }
 
   createSchedule() {
     const { location, user } = this.props;
@@ -31,7 +24,7 @@ class ShowTalk extends React.Component {
 
   handleSubmit() {
     const { history, user } = this.props;
-    post(this.onSuccessPost, () => {}, this.createSchedule(), `https://events-scheduler-api.herokuapp.com/users/${user.id}/schedules`);
+    post(() => {}, () => {}, this.createSchedule(), `https://events-scheduler-api.herokuapp.com/users/${user.id}/schedules`);
     history.push('/schedule');
   }
 
@@ -76,15 +69,11 @@ class ShowTalk extends React.Component {
   }
 }
 ShowTalk.propTypes = {
-  addSchedules: PropTypes.func.isRequired,
   location: PropTypes.objectOf(PropTypes.object).isRequired,
   user: PropTypes.objectOf(PropTypes.object).isRequired,
   history: PropTypes.objectOf(PropTypes.object).isRequired,
 
 };
 
-const mapDispatchToProps = dispatch => ({
-  addSchedules: schedule => dispatch(addSchedules(schedule)),
-});
 
-export default connect(null, mapDispatchToProps)(ShowTalk);
+ 

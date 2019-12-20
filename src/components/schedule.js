@@ -1,21 +1,27 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Talk from './talk';
-import { fetchOnGoing, fetchSuccess, storeSchedules } from '../actions/index';
 import { get } from '../services/api-service';
 
-class Schedules extends React.Component {
+export default class Schedules extends React.Component {
   constructor(props) {
     super(props);
+    this.state = ({
+      schedules: [],
+    });
     this.onFetchSuccess = this.onFetchSuccess.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
   }
 
+  componentDidMount() {
+    const { user } = this.props;
+    get(this.onFetchSuccess, () => {}, `https://events-scheduler-api.herokuapp.com/users/${user.id}/schedules`);
+  }
+
   onFetchSuccess(data) {
-    const { fetchSuccess, storeSchedules } = this.props;
-    fetchSuccess();
-    storeSchedules(data);
+    this.setState({
+      schedules: data,
+    });
   }
 
   handleLogin() {
@@ -24,8 +30,9 @@ class Schedules extends React.Component {
   }
 
   render() {
-    const { fetchOnGoing, handleLogout } = this.props;
-    const { schedules, user } = this.props;
+    const { schedules } = this.state;
+    const { handleLogout } = this.props;
+    const { user } = this.props;
     if (Object.keys(user).length === 0) {
       return (
         <div>
@@ -36,8 +43,6 @@ class Schedules extends React.Component {
       );
     }
 
-    fetchOnGoing();
-    get(this.onFetchSuccess, () => {}, `https://events-scheduler-api.herokuapp.com/users/${user.id}/schedules`);
     return (
       <div style={{ textAlign: 'center' }}>
         <h2>My schedule</h2>
@@ -55,23 +60,8 @@ class Schedules extends React.Component {
 }
 
 Schedules.propTypes = {
-  fetchOnGoing: PropTypes.func.isRequired,
   handleLogout: PropTypes.func.isRequired,
-  storeSchedules: PropTypes.func.isRequired,
-  fetchSuccess: PropTypes.func.isRequired,
   history: PropTypes.objectOf(PropTypes.object).isRequired,
-  schedules: PropTypes.instanceOf(Array).isRequired,
   user: PropTypes.objectOf(PropTypes.object).isRequired,
 
 };
-
-const mapStateToProps = state => ({
-  schedules: state.schedules,
-});
-const mapDispatchToProps = dispatch => ({
-  fetchOnGoing: () => dispatch(fetchOnGoing()),
-  fetchSuccess: () => dispatch(fetchSuccess()),
-  storeSchedules: schedules => dispatch(storeSchedules(schedules)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Schedules);
