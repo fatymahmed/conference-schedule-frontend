@@ -37,7 +37,7 @@ class Schedules extends React.Component {
     }
 
     fetchOnGoing();
-    get(this.onFetchSuccess, () => {}, `https://events-scheduler-api.herokuapp.com/${user.id}/schedules`);
+    get(this.onFetchSuccess, () => {}, `https://events-scheduler-api.herokuapp.com/users/${user.id}/schedules`);
     return (
       <div style={{ textAlign: 'center' }}>
         <h2>My schedule</h2>

@@ -9,8 +9,8 @@ const get = (onSuccess, onError, apiURL) => {
     }).catch(error => onError(error));
 };
 
-const post = (onSuccess, onError, data) => {
-  fetch('https://events-scheduler-api.herokuapp.com/schedules', {
+const post = (onSuccess, onError, data, apiURL) => {
+  fetch(apiURL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

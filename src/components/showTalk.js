@@ -30,8 +30,8 @@ class ShowTalk extends React.Component {
   }
 
   handleSubmit() {
-    const { history } = this.props;
-    post(this.onSuccessPost, () => {}, this.createSchedule());
+    const { history, user } = this.props;
+    post(this.onSuccessPost, () => {}, this.createSchedule(), `https://events-scheduler-api.herokuapp.com/users/${user.id}/schedules`);
     history.push('/schedule');
   }
 
