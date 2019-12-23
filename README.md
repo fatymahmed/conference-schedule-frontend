@@ -1,6 +1,5 @@
 # Conference schedule
 
-> 
 The react app allows 
 - users to view available talks,
 - logged-in users to add talks to their schedule,
