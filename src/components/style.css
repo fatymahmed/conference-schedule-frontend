@@ -118,3 +118,8 @@ label{
     border-radius: 5px;
     margin: 5px;
 }
+
+.schedule-btn{
+    transform: rotate(90deg);
+    background-color: #000080;
+}

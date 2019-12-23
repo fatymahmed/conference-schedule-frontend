@@ -31,7 +31,7 @@ export default class Schedules extends React.Component {
 
   render() {
     const { schedules } = this.state;
-    const { handleLogout } = this.props;
+    const { handleLogout, location, history } = this.props;
     const { user } = this.props;
     if (Object.keys(user).length === 0) {
       return (
@@ -52,6 +52,9 @@ export default class Schedules extends React.Component {
             key={talk.title}
             talk={talk}
             user={user}
+            location={location}
+            history={history}
+            onFetchSuccess={this.onFetchSuccess}
           />
         ))}
       </div>
@@ -62,6 +65,7 @@ export default class Schedules extends React.Component {
 Schedules.propTypes = {
   handleLogout: PropTypes.func.isRequired,
   history: PropTypes.objectOf(PropTypes.object).isRequired,
+  location: PropTypes.objectOf(PropTypes.object).isRequired,
   user: PropTypes.objectOf(PropTypes.object).isRequired,
 
 };

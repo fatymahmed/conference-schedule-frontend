@@ -40,11 +40,7 @@ const post = (onSuccess, onError, data, apiURL) => {
 const remove = (onSuccess, onError, apiURL) => {
   fetch(apiURL, { method: 'DELETE' }).then(result => result.json())
     .then((result) => {
-      if (result.error) {
-        onError();
-      } else {
-        onSuccess(result);
-      }
+      onSuccess(result);
     }).catch(error => onError(error));
 };
 

@@ -45,7 +45,7 @@ class Talks extends React.Component {
   }
 
   render() {
-    const { talks, user } = this.props;
+    const { talks, user, history, location } = this.props;
     return (
       <div>
         <HeaderTalks title="Talks" />
@@ -57,6 +57,8 @@ class Talks extends React.Component {
               key={talk.title}
               talk={talk}
               user={user}
+              history={history}
+              location={location}
             />
           ))}
         </div>
@@ -67,6 +69,7 @@ class Talks extends React.Component {
 }
 
 Talks.propTypes = {
+  location: PropTypes.instanceOf(Object).isRequired,
   history: PropTypes.instanceOf(Object).isRequired,
   talks: PropTypes.instanceOf(Array).isRequired,
   user: PropTypes.instanceOf(Object).isRequired,
