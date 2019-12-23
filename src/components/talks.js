@@ -39,13 +39,15 @@ class Talks extends React.Component {
   }
 
   handleClick(talk) {
-    const { history } = this.props;
+    const { history, user } = this.props;
     const talkInfo = talk;
-    history.push({ pathname: '/talk', state: { talk: talkInfo } });
+    history.push({ pathname: '/talk', state: { talk: talkInfo, user } });
   }
 
   render() {
-    const { talks, user, history, location } = this.props;
+    const {
+      talks, user, history, location,
+    } = this.props;
     return (
       <div>
         <HeaderTalks title="Talks" />

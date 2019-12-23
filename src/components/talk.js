@@ -36,6 +36,7 @@ class Talk extends React.Component {
 
   render() {
     const { location } = this.props;
+    console.log("state in render", location);
     const { talk, onClick } = this.props;
     if (location.pathname === '/talks') {
       return (

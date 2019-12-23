@@ -5,6 +5,9 @@
     margin-left: 60px;
     letter-spacing: -1px;
 }
+h3{
+    text-transform: capitalize;
+}
 form{
     margin-left: -20px;
 }
@@ -107,6 +110,7 @@ label{
     text-align: left;
     font-weight: bold;
     margin-left: 32px;
+    text-transform: capitalize;
 }
 
 .timeDate{
@@ -126,29 +130,55 @@ label{
     width: 90%;
     padding: 10px;
     border-radius: 10px;
+    color: #000080;
+}
+.showTalk p{
+    font-size: 10px;
 }
 .showDate{
+    margin-bottom: 5px;
+    margin-top: 3px;
+    text-align: left;
+    width: 200px;
     display: flex;
     justify-content: space-between;
+    font-size: 12px;
 }
 
+.showTimeDate{
+    margin-top: 2px;
+}
+
+.addSched{
+    margin: 20px auto;  
+}
+.time{
+    font-weight: bold;
+}
 .talkDesc{
     background-color: white;
     width: 85%;
     margin: 10px auto;
 }
 .desc{
-    font-size: 15px;
+    font-size: 13px;
     font-weight: bold;
     color: rgb(0, 0, 128);
     opacity: 0.7;
     margin-bottom: 3px;
+}
+.talkDesc{
+    font-size: 10px;
 }
 
 .talkSpeakers{
     background-color: #F8F8FF;
     padding: 20px;
     margin: 20px;
+}
+
+.speakerHeader{
+    font-size: 13px;
 }
 .talkSpeakers p{
     color: green;
@@ -160,6 +190,7 @@ label{
     border: 1px solid lightgray;
     border-radius: 5px;
     margin: 5px;
+    font-size: 10px;
 }
 
 .schedule-btn{
