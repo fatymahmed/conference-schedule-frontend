@@ -40,8 +40,8 @@ class Talk extends React.Component {
     if (location.pathname === '/talks') {
       return (
         <div className="talkContainer">
-          <p className="timeDate">{changeDateFormat(talk.startTime).date}</p>
-          <p className="timeDate">
+          <p className="timeDate" style={{ color: '#fe70a3' }}>{changeDateFormat(talk.startTime).date}</p>
+          <p className="timeDate" style={{ color: '#17b5db' }}>
             {changeDateFormat(talk.startTime).time}
             {' '}
   -
@@ -49,7 +49,7 @@ class Talk extends React.Component {
             {changeDateFormat(talk.endTime).time}
           </p>
           <button type="submit" onClick={() => onClick(talk)} className="talk">
-            <h4>{talk.title}</h4>
+            <p className="talkTitle">{talk.title}</p>
             <div className="speakerLocation">
               <p>{talk.speakers[0]}</p>
               <p>{talk.location}</p>
@@ -72,7 +72,7 @@ class Talk extends React.Component {
           {changeDateFormat(talk.endTime).time}
         </p>
         <button type="submit" onClick={() => onClick(talk)} className="talk">
-          <h4>{talk.title}</h4>
+          <p className="talkTitle">{talk.title}</p>
           <div className="speakerLocation">
             <p>{talk.speakers[0]}</p>
             <p>{talk.location}</p>

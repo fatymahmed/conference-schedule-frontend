@@ -59,7 +59,7 @@ label{
 }
 
 .button{
-    margin:5px auto;
+    margin:0 auto;
     display: block;
     background-color: #5CBA47;
     color: white;
@@ -75,29 +75,47 @@ label{
 }
 
 .talkContainer{
-    padding-left: 0 40px;
-    padding-top: 5px;
+    padding-left: -20px;
 }
 
 .talkContainer p{
-    margin-left: 40px;
+    text-align: left;
 }
 .talk{
     background-color: white;
-    padding: 10px 0;
+    padding: 5px;
     border: 1px solid #e5faf8;
     border-radius: 2px;
-    width: 300px;
-    margin: 10px auto;
+    width: 250px;
+    margin: 6px auto;
+    height: 66px;
+    text-align: left;
 }
-.talk p,h4{
-    text-align: center;
-}
-.timeDate{
-    font-size: 14px;
+
+.talk p{
+    text-align: left;
+    color: #000080;
 }
 
 .speakerLocation{
+    font-size: 12px;
+    width: 200px;
+}
+.talkTitle{
+    font-size: 15px;
+    padding: 5px;
+    text-align: left;
+    font-weight: bold;
+    margin-left: 32px;
+}
+
+.timeDate{
+    font-size: 10px;
+    margin: 2px 50px;
+}
+
+.speakerLocation{
+    text-align: left;
     display: flex;
     justify-content: space-evenly;
 }
@@ -113,11 +131,9 @@ label{
     display: flex;
     justify-content: space-between;
 }
-.talkDesc{
-    background-color: white;
-}
 
 .talkDesc{
+    background-color: white;
     width: 85%;
     margin: 10px auto;
 }
@@ -147,6 +163,12 @@ label{
 }
 
 .schedule-btn{
-    transform: rotate(90deg);
+    font-size: xx-small;
+    transform: rotate(-90deg);
     background-color: #000080;
+    position: relative;
+    width: 66px;
+    height: 30px;
+    bottom: 55px;
+    left: 110px;
 }

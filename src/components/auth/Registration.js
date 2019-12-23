@@ -7,7 +7,6 @@ import reg from './reg.jpg';
 export default class Registration extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       email: '',
       password: '',
