@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import HeaderTalks from './headerTalks';
-import changeDateFormat from '../helper';
+import { changeDateFormat, apiURL } from './helper';
 import './style.css';
 import { post } from '../services/api-service';
 
@@ -25,7 +25,7 @@ export default class ShowTalk extends React.Component {
 
   handleSubmit() {
     const { history, user } = this.props;
-    post(() => {}, () => {}, this.createSchedule(), `https://events-scheduler-api.herokuapp.com/users/${user.id}/schedules`);
+    post(() => {}, () => {}, this.createSchedule(), `${apiURL}users/${user.id}/schedules`);
     history.push('/schedule');
   }
 

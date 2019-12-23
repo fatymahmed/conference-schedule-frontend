@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Talk from './talk';
 import HeaderTalks from './headerTalks';
+import { apiURL } from './helper';
 import {
   fetchFailure, fetchOnGoing, fetchSuccess, addTalks,
 } from '../actions/index';
@@ -19,7 +20,7 @@ class Talks extends React.Component {
   componentDidMount() {
     const { fetchOnGoing } = this.props;
     fetchOnGoing();
-    get(this.onFetchSuccess, this.onFetchFailure, 'https://events-scheduler-api.herokuapp.com/talks');
+    get(this.onFetchSuccess, this.onFetchFailure, `${apiURL}talks`);
   }
 
   onFetchSuccess(data) {

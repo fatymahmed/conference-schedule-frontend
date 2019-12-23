@@ -3,6 +3,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import '../style.css';
 import reg from './reg.jpg';
+import { apiURL } from '../helper';
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -21,7 +22,7 @@ export default class Login extends React.Component {
   handleSubmit(event) {
     const { email, password } = this.state;
     const { handleLogin, history } = this.props;
-    axios.post('https://events-scheduler-api.herokuapp.com/sessions', {
+    axios.post(`${apiURL}sessions`, {
       user: {
         email,
         password,
@@ -47,7 +48,7 @@ export default class Login extends React.Component {
 
   handleLogoutClick() {
     const { handleLogout, history } = this.props;
-    axios.delete('https://events-scheduler-api.herokuapp.com/logout',
+    axios.delete(`${apiURL}logout`,
       { withCredentials: true })
       .then(() => {
         handleLogout();

@@ -18,4 +18,10 @@ const changeDateFormat = (Time) => {
   });
 };
 
-export default changeDateFormat;
+const apiURL = 'https://events-scheduler-api.herokuapp.com/';
+
+export
+{
+  changeDateFormat,
+  apiURL,
+};

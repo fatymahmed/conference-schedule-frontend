@@ -3,6 +3,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import '../style.css';
 import reg from './reg.jpg';
+import { apiURL } from '../helper';
 
 export default class Registration extends React.Component {
   constructor(props) {
@@ -21,7 +22,7 @@ export default class Registration extends React.Component {
     const { email, password, passwordConfirmation } = this.state;
     const { handleSuccessfulAuth } = this.props;
 
-    axios.post('https://events-scheduler-api.herokuapp.com/registrations', {
+    axios.post(`${apiURL}registrations`, {
       user: {
         email,
         password,

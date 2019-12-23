@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Talk from './talk';
 import { get } from '../services/api-service';
+import { apiURL } from './helper';
 
 export default class Schedules extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ export default class Schedules extends React.Component {
 
   componentDidMount() {
     const { user } = this.props;
-    get(this.onFetchSuccess, () => {}, `https://events-scheduler-api.herokuapp.com/users/${user.id}/schedules`);
+    get(this.onFetchSuccess, () => {}, `${apiURL}users/${user.id}/schedules`);
   }
 
   onFetchSuccess(data) {

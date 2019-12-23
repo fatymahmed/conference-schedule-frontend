@@ -10,6 +10,7 @@ import Home from './Home';
 import Schedules from './schedule';
 import ShowTalk from './showTalk';
 import { storeUser } from '../actions/index';
+import { apiURL } from './helper';
 
 
 class App extends React.Component {
@@ -31,7 +32,7 @@ class App extends React.Component {
     const { loggedInStatus } = this.state;
     const { storeCurrentUser } = this.props;
 
-    axios.get('https://events-scheduler-api.herokuapp.com/logged_in')
+    axios.get(`${apiURL}logged_in`)
       .then((response) => {
         if (response.data.logged_in && loggedInStatus === 'NOT_LOGGED_IN') {
           this.setState({

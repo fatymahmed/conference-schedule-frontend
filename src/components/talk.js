@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './style.css';
-import changeDateFormat from '../helper';
+import { changeDateFormat, apiURL } from './helper';
 import { post, remove } from '../services/api-service';
 
 class Talk extends React.Component {
@@ -22,7 +22,7 @@ class Talk extends React.Component {
 
   handleSubmit() {
     const { history, user, onFetchSuccess } = this.props;
-    post(onFetchSuccess, () => {}, this.createSchedule(), `https://events-scheduler-api.herokuapp.com/users/${user.id}/schedules`);
+    post(onFetchSuccess, () => {}, this.createSchedule(), `${apiURL}users/${user.id}/schedules`);
     history.push('/schedule');
   }
 
@@ -30,13 +30,12 @@ class Talk extends React.Component {
     const {
       history, user, talk, onFetchSuccess,
     } = this.props;
-    remove(onFetchSuccess, () => {}, `https://events-scheduler-api.herokuapp.com/users/${user.id}/schedules/${talk.id}`);
+    remove(onFetchSuccess, () => {}, `${apiURL}users/${user.id}/schedules/${talk.id}`);
     history.push('/schedule');
   }
 
   render() {
     const { location } = this.props;
-    console.log("state in render", location);
     const { talk, onClick } = this.props;
     if (location.pathname === '/talks') {
       return (

@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import Registration from './auth/Registration';
+import { apiURL } from './helper';
 import './style.css';
 
 export default class Home extends React.Component {
@@ -28,7 +29,7 @@ export default class Home extends React.Component {
 
   handleLogoutClick() {
     const { handleLogout } = this.props;
-    axios.delete('https://events-scheduler-api.herokuapp.com/logout',
+    axios.delete(`${apiURL}logout`,
       { withCredentials: true })
       .then(() => {
         handleLogout();
