@@ -75,7 +75,7 @@ export default class Login extends React.Component {
         );
       }
       return (
-        <div>
+        <div style={{ backgroundColor: 'white', textAlign: 'center' }}>
           <h2 style={{ color: 'rgb(0, 0, 128)', textAlign: 'center', marginTop: 10 }}>Login</h2>
           <form onSubmit={this.handleSubmit}>
             <p>Username</p>

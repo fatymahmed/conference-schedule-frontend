@@ -1,30 +1,55 @@
-
+.signUpHeading{
+    margin-bottom: 10px;
+    color: #000080;
+    text-align: left;
+    margin-left: 60px;
+    letter-spacing: -1px;
+}
 form{
-    text-align: center;
+    margin-left: -20px;
 }
 input{
     color: #000080;
     margin-bottom: 5px;
+    background: transparent;
+    border: none;
+    position: relative;
+    font-size: 11px;
+    bottom: 23px;
+    font-weight: bold;
+    margin-left: -38px;
 }
 
 form div{
-    background-color: #e5faf8;
+    background-color: #F8F8FF;
     margin: 15px;
-    padding-top: 10px;
+    padding-top: 2px;
+    height: 50px;
+    width: 200px;
+    height: 30px;
+    margin: 5px auto;
+}
+
+form div p{
+    color: #000080;
+    font-size: 10px;
+    text-align: left;
+    margin-left: 5px;
 }
 
 label{
     opacity: 0.5;
 }
 
+.regImg{
+    height: 200px;
+    width: 250px;
+}
 .signInText{
     font-style: italic;
     opacity: 0.6;
     text-align: center;
-}
-.signInLink{
-    text-align: center;
-    margin-top: 5px;
+    font-size: 11px;
 }
 
 .signInLink:hover{
@@ -41,6 +66,8 @@ label{
     padding: 5px;
     border: 1px solid #5CBA47;
     border-radius: 5px;
+    width: 200px;
+    font-size: 11px;
 }
 
 .button:hover{

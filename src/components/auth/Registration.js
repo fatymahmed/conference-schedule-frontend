@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import '../style.css';
+import reg from './reg.jpg';
 
 export default class Registration extends React.Component {
   constructor(props) {
@@ -57,8 +58,9 @@ export default class Registration extends React.Component {
       );
     }
     return (
-      <div style={{ backgroundColor: 'white' }}>
-        <h2 style={{ color: '#000080', textAlign: 'center' }}>Sign Up</h2>
+      <div style={{ backgroundColor: 'white', textAlign: 'center' }}>
+        <img className="regImg" src={reg} alt="registration" />
+        <h4 className="signUpHeading">Sign Up</h4>
         <form onSubmit={this.handleSubmit}>
           <div>
             <p>Username</p>
