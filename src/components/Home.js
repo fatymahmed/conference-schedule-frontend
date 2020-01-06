@@ -54,7 +54,7 @@ export default class Home extends React.Component {
         <div>
           <Registration handleSuccessfulAuth={this.handleSuccessfulAuth} handleLogin={this.handleLogin} />
           <p className="signInText">Already have an account?</p>
-          <button style={{ marginLeft: 33 }} className="button signInLink" type="submit" onClick={this.handleLogin}>Sign In</button>
+          <button className="button signInLink" type="submit" onClick={this.handleLogin}>Sign In</button>
         </div>
       );
     }

@@ -77,6 +77,10 @@ label{
     cursor: pointer;
 }
 
+.signInLink{
+    margin-left: 33px;
+}
+
 .talkContainer{
     padding-left: -20px;
 }
