@@ -52,9 +52,9 @@ export default class Home extends React.Component {
     if (Object.keys(user).length === 0) {
       return (
         <div>
-          <Registration handleSuccessfulAuth={this.handleSuccessfulAuth} />
+          <Registration handleSuccessfulAuth={this.handleSuccessfulAuth} handleLogin={this.handleLogin} />
           <p className="signInText">Already have an account?</p>
-          <button className="button signInLink" type="submit" onClick={this.handleLogin}>Sign In</button>
+          <button style={{ marginLeft: 33 }} className="button signInLink" type="submit" onClick={this.handleLogin}>Sign In</button>
         </div>
       );
     }
