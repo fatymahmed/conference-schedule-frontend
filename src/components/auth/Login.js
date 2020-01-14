@@ -47,7 +47,6 @@ export default class Login extends React.Component {
   }
 
   handleLogoutClick() {
-    console.log("LOGOUT in LOGIN COMPO");
     const { handleLogout, history } = this.props;
     axios.delete(`${apiURL}logout`,
       { withCredentials: true })

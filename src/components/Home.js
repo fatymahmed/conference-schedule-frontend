@@ -22,7 +22,6 @@ export default class Home extends React.Component {
   }
 
   handleLogoutClick() {
-    console.log('LOGOUT in HOME COMPO');
     const { handleLogout } = this.props;
     axios.delete(`${apiURL}logout`,
       { withCredentials: true })
@@ -53,9 +52,12 @@ export default class Home extends React.Component {
     if (Object.keys(user).length === 0) {
       return (
         <div>
-          <Registration handleSuccessfulAuth={this.handleSuccessfulAuth} handleLogin={this.handleLogin} />
+          <Registration
+            handleSuccessfulAuth={this.handleSuccessfulAuth}
+            handleLogin={this.handleLogin}
+          />
           <p className="signInText">Already have an account?</p>
-          <button className="button signInLink" onClick={this.handleLoginRedirect}>Sign In</button>
+          <button type="submit" className="button signInLink" onClick={this.handleLoginRedirect}>Sign In</button>
         </div>
       );
     }
