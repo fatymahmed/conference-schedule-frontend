@@ -27,7 +27,7 @@ export default class Login extends React.Component {
         email,
         password,
       },
-    })
+    }, { withCredentials: true })
       .then((response) => {
         if (response.data.logged_in) {
           handleLogin(response.data);
@@ -47,6 +47,7 @@ export default class Login extends React.Component {
   }
 
   handleLogoutClick() {
+    console.log("LOGOUT in LOGIN COMPO");
     const { handleLogout, history } = this.props;
     axios.delete(`${apiURL}logout`,
       { withCredentials: true })

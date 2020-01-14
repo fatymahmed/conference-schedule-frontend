@@ -13,21 +13,16 @@ export default class Home extends React.Component {
     };
     this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
     this.handleLogoutClick = this.handleLogoutClick.bind(this);
-    this.handleLogin = this.handleLogin.bind(this);
+    this.handleLoginRedirect = this.handleLoginRedirect.bind(this);
   }
 
-  handleSuccessfulAuth(data) {
-    const { handleLogin, history } = this.props;
-    handleLogin(data);
-    history.push('/talks');
-  }
-
-  handleLogin() {
+  handleLoginRedirect() {
     const { history } = this.props;
     history.push('/login');
   }
 
   handleLogoutClick() {
+    console.log('LOGOUT in HOME COMPO');
     const { handleLogout } = this.props;
     axios.delete(`${apiURL}logout`,
       { withCredentials: true })
@@ -39,6 +34,12 @@ export default class Home extends React.Component {
           logoutErrors: error,
         });
       });
+  }
+
+  handleSuccessfulAuth(data) {
+    const { handleLogin, history } = this.props;
+    handleLogin(data);
+    history.push('/talks');
   }
 
   render() {
@@ -54,7 +55,7 @@ export default class Home extends React.Component {
         <div>
           <Registration handleSuccessfulAuth={this.handleSuccessfulAuth} handleLogin={this.handleLogin} />
           <p className="signInText">Already have an account?</p>
-          <button className="button signInLink" type="submit" onClick={this.handleLogin}>Sign In</button>
+          <button className="button signInLink" onClick={this.handleLoginRedirect}>Sign In</button>
         </div>
       );
     }
@@ -62,7 +63,7 @@ export default class Home extends React.Component {
     return (
       <div>
         <p style={{ textAlign: 'center', paddingTop: 10 }}>You are already logged In</p>
-        <button className="button" type="submit" onClick={this.handleLogoutClick()}>Logout</button>
+        {/* <button className="button" onClick={this.handleLogoutClick()}>Logout</button> */}
       </div>
     );
   }

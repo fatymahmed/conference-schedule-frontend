@@ -18,7 +18,8 @@ const changeDateFormat = (Time) => {
   });
 };
 
-const apiURL = 'https://events-scheduler-api.herokuapp.com/';
+const apiURL = 'http://localhost:3001/';
+// const apiURL = 'https://events-scheduler-api.herokuapp.com/';
 
 export
 {

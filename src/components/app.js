@@ -32,7 +32,8 @@ class App extends React.Component {
     const { loggedInStatus } = this.state;
     const { storeCurrentUser } = this.props;
 
-    axios.get(`${apiURL}logged_in`)
+    axios.get(`${apiURL}logged_in`,
+      { withCredentials: true })
       .then((response) => {
         if (response.data.logged_in && loggedInStatus === 'NOT_LOGGED_IN') {
           this.setState({
@@ -43,6 +44,7 @@ class App extends React.Component {
           this.setState({
             loggedInStatus: 'NOT_LOGGED_IN',
           });
+          storeCurrentUser({});
         }
       })
       .catch((error) => {
