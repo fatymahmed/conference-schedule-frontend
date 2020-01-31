@@ -35,7 +35,7 @@ export default class ShowTalk extends React.Component {
     const startTime = changeDateFormat(talk.startTime);
     const endTime = changeDateFormat(talk.endTime);
     return (
-      <div>
+      <div className="showTalk-container">
         <HeaderTalks title={talk.title} />
         <div className="showTalk">
           <p>Date & Time</p>
