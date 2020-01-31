@@ -60,8 +60,8 @@ export default class Registration extends React.Component {
     return (
       <div style={{ backgroundColor: 'white', textAlign: 'center' }}>
         <img className="regImg" src={reg} alt="registration" />
-        <h4 className="signUpHeading">Sign Up</h4>
-        <form onSubmit={this.handleSubmit}>
+        <h1 className="signUpHeading">Sign Up</h1>
+        <form onSubmit={this.handleSubmit} className="reg-form">
           <div>
             <p>Username</p>
             <br />

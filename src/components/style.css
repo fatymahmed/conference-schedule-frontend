@@ -1,12 +1,17 @@
 .signUpHeading{
+    position: relative;
+    left: -80px;
     margin-bottom: 10px;
     color: #000080;
-    text-align: left;
+    text-align: center;
     margin-left: 60px;
     letter-spacing: -1px;
 }
 h3{
     text-transform: capitalize;
+}
+.reg-form{
+    margin-bottom: 10px;
 }
 form{
     margin-left: -20px;
@@ -20,7 +25,6 @@ input{
     font-size: 11px;
     bottom: 23px;
     font-weight: bold;
-    margin-left: -38px;
 }
 
 form div{
@@ -54,7 +58,11 @@ label{
     text-align: center;
     font-size: 11px;
 }
-
+.signInLink{
+    margin: auto;
+    left: -10px;
+    position: relative;
+}
 .signInLink:hover{
   text-decoration: underline;
   cursor: pointer;
@@ -77,12 +85,9 @@ label{
     cursor: pointer;
 }
 
-.signInLink{
-    margin-left: 33px;
-}
-
 .talkContainer{
-    padding-left: -20px;
+    width: 350px;
+    margin: auto;
 }
 
 .talkContainer p{

@@ -46,7 +46,7 @@ export default class Schedules extends React.Component {
 
     return (
       <div style={{ textAlign: 'center' }}>
-        <h2>My schedule</h2>
+        <h1>My schedule</h1>
         <button className="button" type="submit" onClick={handleLogout}>Logout</button>
         {schedules.map(talk => (
           <Talk

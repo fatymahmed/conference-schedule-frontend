@@ -79,7 +79,7 @@ export default class Login extends React.Component {
       return (
         <div style={{ backgroundColor: 'white', textAlign: 'center' }}>
           <img className="regImg" src={reg} alt="registration" />
-          <h4 className="signUpHeading">Sign In</h4>
+          <h1 className="signUpHeading">Sign In</h1>
           <form onSubmit={this.handleSubmit}>
             <div>
               <p>Username</p>
