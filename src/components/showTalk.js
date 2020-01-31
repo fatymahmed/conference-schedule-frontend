@@ -37,25 +37,23 @@ export default class ShowTalk extends React.Component {
     return (
       <div>
         <HeaderTalks title={talk.title} />
-        <div style={{ backgroundColor: 'rgb(0, 0, 128)', opacity: 0.8, paddingBottom: 5 }}>
-          <div className="showTalk">
-            <p>Date & Time</p>
-            <div style={{ marginBottom: 5 }} className="showDate">
-              <p className="showTimeDate time">{startTime.date}</p>
-              <p className="showTimeDate time">
-                {startTime.time}
-                {' '}
-  -
-                {' '}
-                {endTime.time}
-              </p>
-            </div>
-            <hr />
-            <p style={{ marginTop: 5 }}>Location</p>
-            <p className="time">{talk.location}</p>
+        <div className="showTalk">
+          <p>Date & Time</p>
+          <div className="showDate">
+            <p className="showTimeDate time">{startTime.date}</p>
+            <p className="showTimeDate time">
+              {startTime.time}
+              {' '}
+-
+              {' '}
+              {endTime.time}
+            </p>
           </div>
-          <button type="submit" className="button addSched" onClick={this.handleSubmit}>Add to your schedule</button>
+          <hr />
+          <p className="location">Location</p>
+          <p className="time">{talk.location}</p>
         </div>
+        <button type="submit" className="button addSched" onClick={this.handleSubmit}>Add to your schedule</button>
         <div className="talkDesc">
           <p className="desc">Description</p>
           <p className="talkDesc">{talk.description}</p>

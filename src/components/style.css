@@ -1,3 +1,4 @@
+/***************REG & LOGIN************/
 .signUpHeading{
     position: relative;
     left: -80px;
@@ -69,8 +70,22 @@ label{
   color: darkcyan;
 }
 
+.Errors{
+  text-align: center;
+  color: red;
+}
+
+.auth{
+  background-color: white;
+  text-align: center;
+}
+
+.alreadyLoggedIn{
+  text-align: center;
+  padding-top: 10px;
+}
 .button{
-    margin:0 auto;
+    margin:10px auto;
     display: block;
     background-color: #5CBA47;
     color: white;
@@ -85,6 +100,12 @@ label{
     cursor: pointer;
 }
 
+/********************TALK**********************/
+.talks{
+  background-color: #F8F8FF;
+  text-align: center;
+  padding-top: 15px;
+}
 .talkContainer{
     width: 350px;
     margin: auto;
@@ -133,6 +154,7 @@ label{
     justify-content: space-evenly;
 }
 
+/***********SHOW TALK******************/
 .showTalk{
     background-color: white;
     margin: 0 auto;
@@ -140,18 +162,24 @@ label{
     padding: 10px;
     border-radius: 10px;
     color: #000080;
+    background-color: rgb(0, 0, 128);
+    opacity: 0.8;
+    padding-bottom: 5px;
 }
 .showTalk p{
     font-size: 10px;
 }
 .showDate{
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     margin-top: 3px;
     text-align: left;
     width: 200px;
     display: flex;
     justify-content: space-between;
     font-size: 12px;
+}
+.date{
+  color: #fe70a3;
 }
 
 .showTimeDate{
@@ -163,6 +191,9 @@ label{
 }
 .time{
     font-weight: bold;
+}
+.timeInterval{
+  color: #17b5db;
 }
 .talkDesc{
     background-color: white;
@@ -211,4 +242,31 @@ label{
     height: 30px;
     bottom: 55px;
     left: 110px;
+}
+
+/*************HEADER**********/
+.headerContainer{
+  background-color: #000080;
+  opacity: 0.8;
+}
+.headerTitle{
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.text-center{
+  text-align: center;
+}
+.location{
+  margin-top: 5px;
+}
+
+.myschedule{
+  display: block;
+  margin: auto;
+}
+
+.remove-talk{
+  background-color: green;
 }

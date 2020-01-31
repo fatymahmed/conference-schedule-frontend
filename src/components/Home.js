@@ -46,7 +46,7 @@ export default class Home extends React.Component {
     const { logoutErrors } = this.state;
     if (logoutErrors !== '') {
       return (
-        <h2 style={{ textAlign: 'center', color: 'red' }}>{logoutErrors}</h2>
+        <h2 className="Errors">{logoutErrors}</h2>
       );
     }
     if (Object.keys(user).length === 0) {
@@ -64,7 +64,7 @@ export default class Home extends React.Component {
 
     return (
       <div>
-        <p style={{ textAlign: 'center', paddingTop: 10 }}>You are already logged In</p>
+        <p className="alreadyLoggedIn">You are already logged In</p>
         {/* <button className="button" onClick={this.handleLogoutClick()}>Logout</button> */}
       </div>
     );

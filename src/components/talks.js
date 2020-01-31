@@ -8,6 +8,7 @@ import {
   fetchFailure, fetchOnGoing, fetchSuccess, addTalks,
 } from '../actions/index';
 import { get } from '../services/api-service';
+import './style.css';
 
 class Talks extends React.Component {
   constructor(props) {
@@ -52,8 +53,8 @@ class Talks extends React.Component {
     return (
       <div>
         <HeaderTalks title="Talks" />
-        <button type="submit" style={{ display: 'block', margin: 'auto' }} onClick={this.mySchedule}>My schedule</button>
-        <div style={{ backgroundColor: '#F8F8FF', textAlign: 'center' }}>
+        <button type="submit" className="myschedule" onClick={this.mySchedule}>My schedule</button>
+        <div className="talks">
           <ul>
             {talks.map((talk) => (
               <li key={talk.title}>

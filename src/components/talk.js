@@ -40,8 +40,8 @@ class Talk extends React.Component {
     if (location.pathname === '/talks') {
       return (
         <div className="talkContainer">
-          <p className="timeDate" style={{ color: '#fe70a3' }}>{changeDateFormat(talk.startTime).date}</p>
-          <p className="timeDate" style={{ color: '#17b5db' }}>
+          <p className="timeDate date">{changeDateFormat(talk.startTime).date}</p>
+          <p className="timeDate timeInterval">
             {changeDateFormat(talk.startTime).time}
             {' '}
   -
@@ -63,8 +63,8 @@ class Talk extends React.Component {
     }
     return (
       <div className="talkContainer">
-        <p className="timeDate">{changeDateFormat(talk.startTime).date}</p>
-        <p className="timeDate">
+        <p className="timeDate date">{changeDateFormat(talk.startTime).date}</p>
+        <p className="timeDate timeInterval">
           {changeDateFormat(talk.startTime).time}
           {' '}
 -
@@ -78,7 +78,7 @@ class Talk extends React.Component {
             <p>{talk.location}</p>
           </div>
         </button>
-        <button className="button schedule-btn" type="submit" style={{ backgroundColor: 'green' }} onClick={this.removeFromSchedule}>
+        <button className="button schedule-btn remove-talk" type="submit" onClick={this.removeFromSchedule}>
 - from schedule
         </button>
       </div>

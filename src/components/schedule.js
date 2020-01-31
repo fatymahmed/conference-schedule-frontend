@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Talk from './talk';
 import { get } from '../services/api-service';
 import { apiURL } from './helper';
+import HeaderTalks from './headerTalks';
 
 export default class Schedules extends React.Component {
   constructor(props) {
@@ -45,19 +46,21 @@ export default class Schedules extends React.Component {
     }
 
     return (
-      <div style={{ textAlign: 'center' }}>
-        <h1>My schedule</h1>
+      <div className="text-center">
+        <HeaderTalks title="My Schedule" />
         <button className="button" type="submit" onClick={handleLogout}>Logout</button>
-        {schedules.map(talk => (
-          <Talk
-            key={talk.title}
-            talk={talk}
-            user={user}
-            location={location}
-            history={history}
-            onFetchSuccess={this.onFetchSuccess}
-          />
-        ))}
+        <div className="talks">
+          {schedules.map(talk => (
+            <Talk
+              key={talk.title}
+              talk={talk}
+              user={user}
+              location={location}
+              history={history}
+              onFetchSuccess={this.onFetchSuccess}
+            />
+          ))}
+        </div>
       </div>
     );
   }

@@ -76,7 +76,7 @@ class App extends React.Component {
     const { user } = this.props;
     if (errors !== '') {
       return (
-        <h2 style={{ textAlign: 'center', color: 'red' }}>{errors}</h2>
+        <h2 className="Errors">{errors}</h2>
       );
     }
     return (

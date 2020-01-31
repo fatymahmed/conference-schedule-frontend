@@ -54,11 +54,11 @@ export default class Registration extends React.Component {
     } = this.state;
     if (registrationErrors !== '') {
       return (
-        <h2 style={{ textAlign: 'center', color: 'red' }}>{registrationErrors}</h2>
+        <h2 className="Errors">{registrationErrors}</h2>
       );
     }
     return (
-      <div style={{ backgroundColor: 'white', textAlign: 'center' }}>
+      <div className="auth">
         <img className="regImg" src={reg} alt="registration" />
         <h1 className="signUpHeading">Sign Up</h1>
         <form onSubmit={this.handleSubmit} className="reg-form">

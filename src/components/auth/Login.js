@@ -73,11 +73,11 @@ export default class Login extends React.Component {
     if (Object.keys(user).length === 0) {
       if (errors !== '') {
         return (
-          <h2 style={{ textAlign: 'center', color: 'red' }}>{errors}</h2>
+          <h2 className="Errors">{errors}</h2>
         );
       }
       return (
-        <div style={{ backgroundColor: 'white', textAlign: 'center' }}>
+        <div className="auth">
           <img className="regImg" src={reg} alt="registration" />
           <h1 className="signUpHeading">Sign In</h1>
           <form onSubmit={this.handleSubmit}>
@@ -101,8 +101,8 @@ export default class Login extends React.Component {
 
     return (
       <div>
-        <p style={{ textAlign: 'center', paddingTop: 10 }}>You are already logged In</p>
-        <button type="submit" onClick={this.handleLogoutClick}>Logout</button>
+        <p className="alreadyLoggedIn">You are already logged In</p>
+        <button type="submit" className="button myschedule" onClick={this.handleLogoutClick}>Logout</button>
       </div>
     );
   }
