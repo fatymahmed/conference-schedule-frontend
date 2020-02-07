@@ -56,10 +56,10 @@ class Talks extends React.Component {
         <button type="submit" className="myschedule" onClick={this.mySchedule}>My schedule</button>
         <div className="talks">
           <ul>
-            {talks.map((talk) => (
+            {talks.map(talk => (
               <li key={talk.title}>
                 <Talk
-                  onClick={(i) => this.handleClick(i)}
+                  onClick={i => this.handleClick(i)}
                   key={talk.title}
                   talk={talk}
                   user={user}
@@ -87,15 +87,15 @@ Talks.propTypes = {
   fetchFailure: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   talks: state.talks,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   fetchOnGoing: () => dispatch(fetchOnGoing()),
   fetchFailure: () => dispatch(fetchFailure()),
   fetchSuccess: () => dispatch(fetchSuccess()),
-  addTalks: (talks) => dispatch(addTalks(talks)),
+  addTalks: talks => dispatch(addTalks(talks)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Talks);
