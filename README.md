@@ -6,7 +6,7 @@ The react app allows
 - logged-in users to remove talks from their schedule,
 - logged-in users to view their schedule.
 
-The app also uses a Rails [API](https://events-scheduler-api.herokuapp.com), which can be found [here](https://github.com/fatymahmed/schedule-backend) that stores the data of the users, talks and schedules.
+The app also uses a Rails API [found here](https://github.com/fatymahmed/schedule-backend) that stores the data of the users, talks, and schedules.
 
 ![screenshot](./showTalk.png)
 
